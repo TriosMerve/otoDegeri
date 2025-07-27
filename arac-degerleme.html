@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtoDegeri.com | Araç Değerleme</title>
+
+    <link rel="stylesheet" href="public/front/css/app.min.css">
+</head>
+<body>
+    <div class="preloader">
+        <div class="loaderText">Yükleniyor...</div>
+    </div>
+    <div class="main carValueWrapper">
+        <div class="leftColumn">
+            <div class="header">
+                <a href="#" class="logo">OtoDeğeri.com</a>
+                <div class="menuDropdownWrapper">
+                    <a href="#" class="dropdownButton">Üye Girişi</a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="#">Çıkış</a></li>
+                            <li><a href="#">Çıkış</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="carValueFormWrapper">
+                <ul class="formStepMenu">
+                    <li class="active">Hoşgeldiniz</li>     
+                    <li>Marka / Model / Versiyon</li>     
+                    <li>Vites / Yakıt</li>     
+                    <li>Kilometre Bilgisi</li>     
+                    <li>Tramer Bilgisi</li>     
+                    <li>Hasar Bilgisi</li>     
+                    <li>Kişisel Bilgiler</li>     
+                </ul>
+                <div class="carValueForm">
+                    <div class="resultCarValue">
+
+                    </div>
+                    <div class="formStepWrapper">
+                        <div class="formStep active">
+                            <div class="title"><b>Araç Değerleme</b> Sayfamıza Hoşgeldiniz</div>
+                            <div class="text">Otodeğeri.com üyeliğiniz var mı?</div>
+
+                            <div class="form">
+                                <div class="form-group">
+                                    <div class="radioContainer">
+                                        <label for="uyelikEvet"><input type="radio" id="uyelikEvet" name="uyelik"> Evet</label>
+                                    </div>
+                                    <div class="radioContainer">
+                                        <label for="uyelikHayir"><input type="radio" id="uyelikHayir" name="uyelik"> Hayır</label>
+                                    </div>
+                                </div>
+                                <a href="#" class="nextButton">DEVAM ET</a>
+                            </div>
+                        </div>
+                        <div class="formStep">
+                            <div class="form">
+                                <div class="formLabel">Adınızı girerek başlayabiliriz.</div>
+                                <div class="form-group">
+                                    <div class="inputColumn">
+                                        <input type="text" placeholder="Adınız">
+                                    </div>
+                                    <div class="inputColumn">
+                                        <input type="text" placeholder="Soyadınz">
+                                    </div>
+                                </div>
+                                <a href="#" class="nextButton">DEVAM ET</a>
+                            </div>
+                        </div>
+                        <div class="formStep">
+                            <div class="form">
+                                <div class="formLabel">Aracınızın marka, model ve versiyon bilgisini giriniz.</div>
+                                <div class="form-group">
+                                    <div class="dataColumn">
+                                        <input list="marka" name="marka">
+                                        <datalist id="marka">
+                                            <option value="Edge">
+                                            <option value="Firefox">
+                                            <option value="Chrome">
+                                            <option value="Opera">
+                                            <option value="Safari">
+                                        </datalist>
+                                    </div>
+                                    <div class="dataColumn">
+                                        <input list="model" name="model">
+                                        <datalist id="model">
+                                            <option value="Edge">
+                                            <option value="Firefox">
+                                            <option value="Chrome">
+                                            <option value="Opera">
+                                            <option value="Safari">
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <div class="dataColumn">
+                                    <input list="version" name="version">
+                                    <datalist id="version">
+                                        <option value="Edge">
+                                        <option value="Firefox">
+                                        <option value="Chrome">
+                                        <option value="Opera">
+                                        <option value="Safari">
+                                    </datalist>
+                                </div>
+                                <a href="#" class="nextButton">DEVAM ET</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightColumn">
+            Reklam alanı
+        </div>
+    </div>
+
+    <script src="public/front/js/app.js" defer></script>
+    <script src="public/front/js/arac-degerleme.js" defer></script>
+</body>
+</html>

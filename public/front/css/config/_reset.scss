@@ -1,0 +1,129 @@
+/* Reset CSS */
+
+/* Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Typography */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+  font-weight: normal;
+}
+html{
+}
+html,body{
+  min-height: 100vh;
+  background-color:#ffffff;
+}
+body{
+  font-size: 16px;
+  line-height:22px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  overflow-x: hidden;
+  background-color: #ffffff;
+   scroll-behavior: smooth;
+
+  // &::-webkit-scrollbar{
+  //   background-color: transparent;
+  //   width: 0;
+  // }
+  // &::-webkit-scrollbar-thumb {
+  //   background-color: transparent;
+  //   width: 0;
+  //   /* Chrome, Safari, Edge ve Opera için */
+  // }
+
+  // &::-webkit-scrollbar-track {
+  //   background-color: transparent;
+  //   width:0;
+  //   /* Chrome, Safari, Edge ve Opera için */
+  // }
+}
+
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Lists */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Forms */
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* Reset Image */
+img {
+  max-width: 100%;
+  height: auto;
+  overflow: clip;
+  overflow-clip-margin: content-box;
+}
+
+/* Reset Table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Misc */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Responsive Embeds */
+embed,
+iframe,
+object,
+video {
+  max-width: 100%;
+}
+
+/* Clear Floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}

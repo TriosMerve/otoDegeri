@@ -1,0 +1,49 @@
+.carValueWrapper {
+  display: flex;
+  align-items: stretch;
+  .leftColumn {
+    flex: 1;
+    background-color: var(--gray-100);
+
+    .header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      .menuDropdownWrapper{
+        margin-left: auto;
+      }
+    }
+
+    .carValueFormWrapper{
+        height: calc(100% - 100px);
+        background-color: var(--gray-200);
+    }
+  }
+  .rightColumn {
+    width: 300px;
+    min-width: 300px;
+  }
+}
+
+
+.carValueFormWrapper{
+    display: flex;
+    align-items: flex-start;
+    .formStepMenu{
+        display: flex;
+        flex-direction: column;
+    }
+    .carValueForm{
+        .resultCarValue{
+
+        }
+        .formStepWrapper{
+            .formStep{
+                display: none;
+                &.active{
+                    display: block;
+                }
+            }
+        }
+    }
+}

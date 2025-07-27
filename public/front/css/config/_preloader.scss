@@ -1,0 +1,48 @@
+.preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  z-index: 999;
+  
+  .customIcon {
+    font-size: 80px;
+    position: relative;
+    color: var(--secondary);
+    color: #424141;
+    &:after {
+      content: "\e907";
+      font-family: "customFont" !important;
+      font-size: 80px;
+      color: var(--white);
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      animation: animloader 10s ease-in infinite;
+    }
+  }
+  .loaderText {
+    font-size: 80px;
+    color: var(--white);
+    @media screen and (max-width:991.98px) {
+      font-size: 40px;
+    }
+  }
+}
+@keyframes animloader {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
