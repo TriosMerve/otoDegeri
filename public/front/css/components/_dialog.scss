@@ -1,0 +1,74 @@
+dialog {
+  max-width: 500px;
+  width: 100%;
+  border: none;
+  outline: 0;
+  padding: 0;
+
+  .dialogHead {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+    .dialogTitle {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .closeBtn {
+      box-sizing: content-box;
+      width: 25px;
+      height: 25px;
+      color: #000;
+      background: transparent
+        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
+        center/15px auto no-repeat;
+      border: none;
+      border-radius: 0.25rem;
+      opacity: 0.5;
+      margin-left: auto;
+      border: none;
+      outline: 0;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s linear;
+      @media screen and (min-width: 992px) {
+        &:hover {
+          background: transparent
+            url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23940'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
+            center/15px auto no-repeat;
+        }
+      }
+    }
+  }
+  .dialogContent {
+    flex: 1 1 auto;
+    padding: 1rem;
+    position: relative;
+    p {
+      color: #444;
+      font-size: 14px;
+      line-height: 24px;
+      margin: 0;
+    }
+  }
+  .dialogFooter {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+    border-bottom-right-radius: calc(0.3rem - 1px);
+    border-bottom-left-radius: calc(0.3rem - 1px);
+    .statusButton {
+      width: 100%;
+    }
+  }
+}

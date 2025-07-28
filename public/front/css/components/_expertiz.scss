@@ -1,0 +1,264 @@
+.ekspertizWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  padding-top: 100px;
+  @media screen and (max-width: 991.98px) {
+    flex-direction: column-reverse;
+    padding: 0 30px;
+    width: 100%;
+    .leftColumn {
+      width: 100%;
+    }
+    .rightColumn {
+      width: 100%;
+    }
+  }
+
+  .headTitle {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    color: #363636;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+  .tramerColumn {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    min-height: 40px;
+    .checkList {
+      gap: 30px;
+    }
+    .containerCheck {
+      display: flex;
+      align-items: center;
+      min-height: initial;
+      padding-left: 24px;
+      .checkmark {
+        top: 3px;
+      }
+    }
+    .tramerCss {
+      font-size: 14px;
+      background-color: #fff;
+      border: 2px solid #e0e5ea;
+      padding: 8px;
+      margin: 0;
+      border-radius: 2px;
+      margin-left: 30px;
+    }
+  }
+  .carWrapper {
+    width: 400px;
+    position: relative;
+    @media screen and (max-width: 991.98px) {
+      width: 100%;
+    }
+
+    //svg hover
+    .toolTip {
+      position: fixed; /* çünkü clientX/clientY -> viewport koordinatıdır */
+      background: #444;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      pointer-events: none;
+      z-index: 9999;
+      display: none;
+    }
+  }
+  .ekspertizSablon {
+    path {
+      transition: all 0.3s linear;
+      cursor: pointer;
+      position: relative;
+      // &[data-title]::before{
+      //     content: attr(data-title);
+      //     position: absolute;
+      //     color: black;
+      //     background-color: gray;
+      // }
+      @media screen and (min-width: 992px) {
+        &[data-title]:hover {
+          fill: rgba(210, 168, 81) !important;
+        }
+      }
+    }
+  }
+  .checkList {
+    display: flex;
+    align-items: center;
+  }
+  .carPartList {
+    border: 2px solid #f0f0f0;
+    padding: 0;
+    width: 420px;
+    @media screen and (max-width: 991.98px) {
+      width: 100%;
+    }
+    .carPartHead {
+      background-color: #fff;
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 10px;
+      font-size: 14px;
+      color: rgba(26, 26, 26);
+      & > div {
+        min-width: 60px;
+        text-align: center;
+      }
+    }
+    .carPartItem {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 10px;
+      height: 45px;
+      background-color: rgb(251, 251, 251);
+      font-size: 12px;
+      color: rgb(26, 26, 26);
+      &:not(:first-child) {
+        border-top: 1px solid #ebebec;
+      }
+
+      .checkList {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        .containerCheck {
+          min-width: 60px;
+          .checkmark {
+            margin: 0 auto;
+            right: 0;
+          }
+        }
+      }
+      @media screen and (min-width: 992px) {
+        &:hover {
+          background-color: rgba(210, 168, 81) !important;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  .status-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 20px;
+    @media screen and (max-width: 991.98px) {
+      gap: 10px;
+    }
+    & > div {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      @media screen and (max-width: 991.98px) {
+        gap: 3px;
+      }
+      &:before {
+        content: "";
+        display: block;
+        width: 14px;
+        height: 14px;
+        border-radius: 100%;
+      }
+      &.status-original {
+        &:before {
+          background-color: #ffffff;
+          border: 1px solid #000000;
+        }
+      }
+      &.status-cizik {
+        &:before {
+          background-color: #fe9546;
+          border: 1px solid #fe9546;
+        }
+      }
+      &.status-boyali {
+        &:before {
+          background-color: #ffdb4d;
+          border: 1px solid #ffdb4d;
+        }
+      }
+      &.status-degismis {
+        &:before {
+          background-color: #e40030;
+          border: 1px solid #e40030;
+        }
+      }
+    }
+  }
+  .path-original {
+    fill: #ffffff !important;
+  }
+  .path-cizik {
+    fill: #f9a825 !important;
+  }
+  .path-boyali {
+    fill: hsl(59, 100%, 48%) !important;
+  }
+  .path-degismis {
+    fill: #d32f2f !important;
+  }
+
+  .path-hover {
+    fill: rgba(210, 168, 81);
+    transition: all 0.3s ease;
+  }
+}
+.statusButton {
+  .button {
+    width: 24%;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &.active {
+      border: 1px solid black;
+    }
+    @media screen and (min-width: 992px) {
+      &:hover {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  .button-original {
+    color: #41464b;
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+
+  .button-cizik {
+    background: #fe9546;
+    color: #ffffff;
+  }
+  .button-boyali {
+    background: #ffdb4d;
+  }
+  .button-degismis {
+    background: #e40030;
+    color: #ffffff;
+  }
+}

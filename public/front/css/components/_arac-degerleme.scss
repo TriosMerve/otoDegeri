@@ -24,7 +24,19 @@
     min-width: 300px;
   }
 }
-
+.formStepMenu{
+    li{
+        opacity: 0.5;
+        cursor: default;
+        &.active{
+            font-weight: 600;
+            opacity: 1;
+        }
+        &:disabled{
+            opacity: 0.3;
+        }
+    }
+}
 
 .carValueFormWrapper{
     display: flex;
@@ -46,4 +58,18 @@
             }
         }
     }
+}
+
+.summaryExpertizTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.summaryExpertizTable th,
+.summaryExpertizTable td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: left;
 }
