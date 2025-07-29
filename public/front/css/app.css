@@ -655,10 +655,19 @@ video {
   display: flex;
   flex-direction: column;
 }
-.carValueFormWrapper .carValueForm .formStepWrapper .formStep {
+.carValueFormWrapper .carValueForm .formStepWrapper .formStep .stepSummary {
   display: none;
 }
-.carValueFormWrapper .carValueForm .formStepWrapper .formStep.active {
+.carValueFormWrapper .carValueForm .formStepWrapper .formStep .formContent {
+  display: none;
+}
+.carValueFormWrapper .carValueForm .formStepWrapper .formStep.active .formContent {
+  display: block;
+}
+.carValueFormWrapper .carValueForm .formStepWrapper .formStep.completed .formContent {
+  display: none;
+}
+.carValueFormWrapper .carValueForm .formStepWrapper .formStep.completed .stepSummary {
   display: block;
 }
 
@@ -674,6 +683,22 @@ video {
   border: 1px solid #ccc;
   padding: 6px 8px;
   text-align: left;
+}
+
+.stepSummary {
+  background: #f9f9f9;
+  border-left: 3px solid #007bff;
+  padding: 12px;
+  margin-top: 10px;
+  display: none;
+}
+
+.summaryItem {
+  margin-bottom: 10px;
+}
+
+.summaryItem button.editBtn {
+  margin-top: 5px;
 }
 
 .containerCheck {

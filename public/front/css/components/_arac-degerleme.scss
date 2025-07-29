@@ -9,14 +9,14 @@
       display: flex;
       align-items: center;
       width: 100%;
-      .menuDropdownWrapper{
+      .menuDropdownWrapper {
         margin-left: auto;
       }
     }
 
-    .carValueFormWrapper{
-        height: calc(100% - 100px);
-        background-color: var(--gray-200);
+    .carValueFormWrapper {
+      height: calc(100% - 100px);
+      background-color: var(--gray-200);
     }
   }
   .rightColumn {
@@ -24,40 +24,56 @@
     min-width: 300px;
   }
 }
-.formStepMenu{
-    li{
-        opacity: 0.5;
-        cursor: default;
-        &.active{
-            font-weight: 600;
-            opacity: 1;
-        }
-        &:disabled{
-            opacity: 0.3;
-        }
+.formStepMenu {
+  li {
+    opacity: 0.5;
+    cursor: default;
+    &.active {
+      font-weight: 600;
+      opacity: 1;
     }
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
 }
 
-.carValueFormWrapper{
+.carValueFormWrapper {
+  display: flex;
+  align-items: flex-start;
+  .formStepMenu {
     display: flex;
-    align-items: flex-start;
-    .formStepMenu{
-        display: flex;
-        flex-direction: column;
+    flex-direction: column;
+  }
+  .carValueForm {
+    .resultCarValue {
     }
-    .carValueForm{
-        .resultCarValue{
-
+    .formStepWrapper {
+      .formStep {
+        .stepSummary {
+          display: none;
         }
-        .formStepWrapper{
-            .formStep{
-                display: none;
-                &.active{
-                    display: block;
-                }
-            }
+        .formContent {
+          display: none;
         }
+        &.active {
+          .formContent {
+            display: block;
+          }
+        }
+        &.completed {
+          .formContent {
+            display: none;
+          }
+        }
+        &.completed {
+          .stepSummary {
+            display: block;
+          }
+        }
+      }
     }
+  }
 }
 
 .summaryExpertizTable {
@@ -72,4 +88,18 @@
   border: 1px solid #ccc;
   padding: 6px 8px;
   text-align: left;
+}
+
+.stepSummary {
+  background: #f9f9f9;
+  border-left: 3px solid #007bff;
+  padding: 12px;
+  margin-top: 10px;
+  display: none;
+}
+.summaryItem {
+  margin-bottom: 10px;
+}
+.summaryItem button.editBtn {
+  margin-top: 5px;
 }
