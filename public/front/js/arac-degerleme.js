@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navItems = document.querySelectorAll(".formStepMenu li");
   const nextButtons = document.querySelectorAll(".nextButton");
   const prevButtons = document.querySelectorAll(".prevButton");
-  const summaryArea = document.querySelector(".resultCarValue");
 
   const uyelikInputs = document.querySelectorAll("input[name='uyelikSecimi']");
   const uyelikEvetForm = document.querySelector(".uyelikEvetForm");
@@ -17,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   uyelikInputs.forEach((input) => {
     input.addEventListener("change", () => {
+      document.querySelector(".goStep").removeAttribute("disabled");
+      document.querySelector(".goStep").classList.remove("disabled");
       stepWelcome.style.display = "block";
     });
   });
@@ -61,27 +62,34 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isCurrent) {
         step.classList.add("active");
         step.classList.remove("completed");
-        if (formContent) formContent.style.display = "block";
-        if (summary) summary.style.display = "none";
+        if (formContent) formContent.classList.add("show");
+        // if (formContent) formContent.style.display = "block";
+        if (summary) summary.classList.remove("show");
+        // if (summary) summary.style.display = "none";
       } else if (isBefore) {
         step.classList.remove("active");
         step.classList.add("completed");
-        if (formContent) formContent.style.display = "none";
-        if (summary) summary.style.display = "block";
+        if (formContent) formContent.classList.remove("show");
+        // if (formContent) formContent.style.display = "none";
+        if (summary) summary.classList.add("show");
+        // if (summary) summary.style.display = "block";
       } else if (isAfter) {
         step.classList.remove("active");
 
         // 🔥 YENİ: SADECE düzenleme modunda DEĞİLSE ileri adımları temizle
         if (!isEditMode && !isEditing) {
           step.classList.remove("completed");
-          if (summary) summary.style.display = "none";
+          if (summary) summary.classList.remove("show");
+          // if (summary) summary.style.display = "none";
         }
 
-        if (formContent) formContent.style.display = "none";
+        if (formContent) formContent.classList.remove("show");
+        // if (formContent) formContent.style.display = "none";
 
         // Düzenleme modundaysak ileri adımların özeti görünmeye devam etmeli
         if ((isEditMode || isEditing) && step.classList.contains("completed")) {
-          if (summary) summary.style.display = "block";
+          if (summary) summary.classList.add("show");
+          // if (summary) summary.style.display = "block";
         }
       }
     });
@@ -116,7 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!summaryContainer) return;
 
       if (!step.classList.contains("completed")) {
-        summaryContainer.style.display = "none";
+        // summaryContainer.style.display = "none";
+        summaryContainer.classList.remove("show");
         return;
       }
 
@@ -127,9 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "input:checked, input[type='text'], input[list], select"
       );
       const answers = Array.from(inputs)
-        .filter((el) => el.value.trim())
+        .filter((el) => {
+          // uyelikSecimi alanını hariç tut
+          return el.name !== "uyelikSecimi" && el.value.trim();
+        })
         .map((el) => el.value.trim())
-        .join(" / ");
+        .join(" ");
 
       if (step.classList.contains("hasarStep")) {
         const carParts = step.querySelectorAll(".carPartItem");
@@ -166,7 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `;
           summaryContainer.innerHTML = html;
-          summaryContainer.style.display = "block";
+          summaryContainer.classList.add("show");
+          // summaryContainer.style.display = "block";
         }
         return;
       }
@@ -174,12 +187,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (label && answers) {
         const html = `
           <div class="summaryItem" data-goto="${index}">
-            <strong>${label.textContent}</strong>: <div class="answer">${answers}</div>
+            <strong>${label.textContent}</strong> <div class="answer">${answers}</div>
             <button class="editBtn">Düzenle</button>
           </div>
         `;
         summaryContainer.innerHTML = html;
-        summaryContainer.style.display = "block";
+        summaryContainer.classList.add("show");
+        // summaryContainer.style.display = "block";
       }
     });
 
@@ -285,4 +299,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showStep(0);
   updateSummary();
+
+  function validateStepForm(stepElement) {
+    const requiredInputs = stepElement.querySelectorAll("input[required]");
+    const nextButton = stepElement.querySelector(".nextButton");
+
+    if (!nextButton) return;
+
+    const allFilled = Array.from(requiredInputs).every(
+      (input) => input.value.trim() !== ""
+    );
+
+    if (allFilled) {
+      nextButton.removeAttribute("disabled");
+      nextButton.classList.remove("disabled");
+    } else {
+      nextButton.setAttribute("disabled", "true");
+      nextButton.classList.add("disabled");
+    }
+  }
+
+  // Tüm form adımları için input dinleyicisi
+  document.querySelectorAll(".formStep .form").forEach((formStep) => {
+    formStep.addEventListener("input", () => {
+      validateStepForm(formStep);
+    });
+  });
+  $(".customSelect").on("change", function () {
+    const formStep = this.closest(".formStep .form");
+    if (formStep) {
+      validateStepForm(formStep);
+    }
+  });
 });

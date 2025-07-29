@@ -1,10 +1,33 @@
 .carValueWrapper {
   display: flex;
   align-items: stretch;
-  .leftColumn {
+  h1 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 30px;
+    b {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+  }
+  .text {
+    font-weight: 500;
+    color: var(--black);
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 50px;
+  }
+  & > .leftColumn {
     flex: 1;
     background-color: var(--gray-100);
-
+    @media screen and (max-width: 1920px) {
+      padding-left: 6.75vw;
+    }
+    @media screen and (max-width: 1921px) {
+      padding-left: 129.6px;
+    }
     .header {
       display: flex;
       align-items: center;
@@ -16,24 +39,161 @@
 
     .carValueFormWrapper {
       height: calc(100% - 100px);
-      background-color: var(--gray-200);
     }
   }
-  .rightColumn {
+  & > .rightColumn {
     width: 300px;
     min-width: 300px;
+    @media screen and (max-width: 1920px) {
+      padding-right: 6.75vw;
+    }
+    @media screen and (max-width: 1921px) {
+      padding-right: 129.6px;
+    }
+  }
+  .form {
+    .formLabel {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--black);
+    }
+    input {
+      height: 55px;
+      background-color: var(--white);
+      border-radius: 8px;
+      padding: 0 20px;
+
+      &::placeholder {
+        color: var(--gray-250);
+      }
+      &::-moz-placeholder {
+        color: var(--gray-250);
+      }
+      &::-webkit-input-placeholder {
+        color: var(--gray-250);
+      }
+    }
+    .fixBtn {
+      margin-top: 30px;
+      text-transform: uppercase;
+    }
+    .selectColumn {
+      .select2 {
+        height: 55px;
+        background-color: var(--white);
+        border-radius: 8px;
+        padding: 0 20px;
+        .selection,
+        .select2-selection {
+          height: 100%;
+          display: inline-flex;
+          align-items: center;
+          width: 100%;
+          border: none;
+        }
+      }
+    }
+  }
+  .radioContainer {
+    background-color: var(--white);
+    border-radius: 4px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 216px;
+    width: 216px;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--black);
+    gap: 10px;
+    cursor: pointer;
+    input[type="radio"] {
+      width: 26px;
+      height: 26px;
+      appearance: none;
+      position: absolute;
+      padding: 0;
+    }
+    .checkcircle {
+      width: 26px;
+      height: 26px;
+      border: 1px solid var(--gray-100);
+      background-color: var(--white);
+      border-radius: 100%;
+      position: relative;
+      cursor: pointer;
+      &:after {
+        content: "";
+        width: 70%;
+        height: 70%;
+        position: absolute;
+        background-color: var(--secondary);
+        border-radius: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        opacity: 0;
+        transition: all 0.3s linear;
+      }
+    }
+    input[type="radio"]:checked ~ .checkcircle:after {
+      opacity: 1;
+    }
+  }
+  .form-groups {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding-top: 16px;
+    input:not([type="radio"]),
+    .selectColumn {
+      min-width: 315px;
+      width: 315px;
+    }
+    select {
+      width: 100%;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
   }
 }
 .formStepMenu {
+  width: 215px;
   li {
-    opacity: 0.5;
     cursor: default;
-    &.active {
-      font-weight: 600;
-      opacity: 1;
+    font-size: 14px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--black);
+    position: relative;
+    gap: 20px;
+    &:before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 100%;
+      border: 4px solid var(--gray-200);
     }
-    &:disabled {
-      opacity: 0.3;
+    &.active {
+      color: var(--secondary);
+      &:before {
+        border-color: var(--secondary);
+      }
+    }
+    &.disabled {
+      color: var(--gray-200);
+      &:before {
+        border-color: var(--gray-150);
+      }
     }
   }
 }
@@ -46,29 +206,67 @@
     flex-direction: column;
   }
   .carValueForm {
+    width: calc(100% - 215px);
+    padding-left: 4.6875vw;
+    @media screen and (min-width: 1921px) {
+      padding-left: 90px;
+    }
     .resultCarValue {
     }
     .formStepWrapper {
+      padding-top: 19px;
       .formStep {
         .stepSummary {
-          display: none;
+          height: 0;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s linear;
+          transform: translateY(30px);
+          &.show {
+            height: auto;
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          .editBtn {
+            visibility: hidden;
+            position: absolute;
+            opacity: 0;
+          }
         }
         .formContent {
-          display: none;
+          height: 0;
+          opacity: 0;
+          visibility: hidden;
+          overflow: hidden;
+          transition: all 0.3s linear;
+          &.show {
+            height: auto;
+            visibility: visible;
+            opacity: 1;
+          }
         }
         &.active {
           .formContent {
-            display: block;
+            height: auto;
+            visibility: visible;
+            opacity: 1;
           }
         }
         &.completed {
           .formContent {
-            display: none;
+            visibility: hidden;
+            overflow: hidden;
+            height: 0;
+            opacity: 0;
           }
         }
         &.completed {
           .stepSummary {
-            display: block;
+            height: auto;
+            visibility: visible;
+            opacity: 1;
           }
         }
       }
@@ -90,16 +288,89 @@
   text-align: left;
 }
 
-.stepSummary {
-  background: #f9f9f9;
-  border-left: 3px solid #007bff;
-  padding: 12px;
-  margin-top: 10px;
-  display: none;
-}
 .summaryItem {
   margin-bottom: 10px;
 }
 .summaryItem button.editBtn {
   margin-top: 5px;
+}
+
+.selectColumn {
+  .select2-container--default {
+    .select2-selection--single {
+      .select2-selection__arrow {
+        height: 38px;
+        position: absolute;
+        top: 9px;
+        right: 10px;
+        width: 31px;
+        b {
+          border-width: 10px 8px 0 8px;
+        }
+      }
+    }
+  }
+}
+.select2-container--open {
+  .select2-dropdown--below,
+  .select2-dropdown--above {
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-500);
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.5);
+    padding-bottom: 10px;
+    max-height: 300px;
+  }
+  .select2-dropdown--above {
+    margin-top: -20px;
+    border: 1px solid var(--gray-500);
+    border-radius: 10px !important;
+    padding-bottom: 10px;
+  }
+
+  .select2-search--dropdown {
+    display: block;
+    padding: 10px 20px 20px;
+  }
+  .select2-results__option {
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    color: var(--gray-250);
+    font-size: 14px;
+    padding: 0 20px;
+    font-weight: 500;
+  }
+}
+
+.select2-container--default {
+  .select2-results {
+    & > .select2-results__options {
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--secondary);
+        &::-webkit-scrollbar-track {
+          background-color: var(--secondary);
+        }
+      }
+    }
+  }
+  .select2-results__option--selected {
+    background-color: var(--gray-50);
+  }
+  .select2-results__option--highlighted {
+    &.select2-results__option--selectable {
+      background-color: var(--secondary);
+    }
+  }
+}
+
+.select2-search--dropdown {
+  .select2-search__field {
+    border-radius: 1px solid var(--gray-150);
+    border-radius: 6px;
+    font-size: 14px;
+    height: 40px;
+    color: var(--gray-250);
+    padding: 0 10px;
+  }
 }

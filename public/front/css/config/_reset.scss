@@ -31,22 +31,22 @@ h6 {
   font-size: 1em;
   font-weight: normal;
 }
-html{
+b{
+  font-weight: 700;
 }
-html,body{
-  min-height: 100vh;
-  background-color:#ffffff;
+html {
 }
-body{
+body {
   font-size: 16px;
-  line-height:22px;
-  font-family: "Inter", sans-serif;
+  line-height: 22px;
+  font-family: "Poppins", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden;
   background-color: #ffffff;
-   scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  min-height: 100vh;
 
   // &::-webkit-scrollbar{
   //   background-color: transparent;
@@ -64,7 +64,6 @@ body{
   //   /* Chrome, Safari, Edge ve Opera için */
   // }
 }
-
 
 /* Links */
 a {
