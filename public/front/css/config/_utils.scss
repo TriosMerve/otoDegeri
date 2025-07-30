@@ -73,6 +73,22 @@ $colors: (
         }
       }
     }
+    .button-#{$name}-outline {
+      &:not(.disabled) {
+        background-color: rgba(0,0,0,0);
+        border:1px solid $color;
+        color: $color;
+        @media screen and (min-width: 992px) {
+          &:hover {
+            background-color: var(--white) !important;
+            color: $color !important;
+            img{
+              filter: none!important;
+            }
+          }
+        }
+      }
+    }
   }
 }
 @include generate-button-classes($colors);

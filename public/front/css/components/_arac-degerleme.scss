@@ -12,6 +12,24 @@
       font-weight: 600;
     }
   }
+  table {
+    tr {
+      th,
+      td {
+        border: 1px solid var(--gray-150);
+        padding: 5px 20px;
+        font-size: 14px;
+      }
+      th {
+        background-color: var(--gray-100);
+        color: var(--secondary);
+        text-align: left;
+        font-weight: 600;
+      }
+      td {
+      }
+    }
+  }
   .text {
     font-weight: 500;
     color: var(--black);
@@ -22,6 +40,8 @@
   & > .leftColumn {
     flex: 1;
     background-color: var(--gray-100);
+    position: relative;
+    padding-right: 40px;
     @media screen and (max-width: 1920px) {
       padding-left: 6.75vw;
     }
@@ -31,9 +51,30 @@
     .header {
       display: flex;
       align-items: center;
-      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s linear;
+      position: fixed;
+      width: calc(100% - 300px);
+      left: 0;
+      padding-right: 40px;
+      z-index: 9;
+      @media screen and (max-width: 1920px) {
+        padding-left: 6.75vw;
+      }
+      @media screen and (max-width: 1921px) {
+        padding-left: 129.6px;
+      }
       .menuDropdownWrapper {
         margin-left: auto;
+        .fixBtn {
+          min-width: 170px;
+          font-size: 15px;
+          font-weight: 600;
+          gap: 30px;
+          height: 50px;
+        }
       }
     }
 
@@ -52,6 +93,9 @@
     }
   }
   .form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     .formLabel {
       font-weight: 500;
       font-size: 15px;
@@ -71,6 +115,17 @@
       }
       &::-webkit-input-placeholder {
         color: var(--gray-250);
+      }
+    }
+    .textareColumn {
+      width: 100%;
+      textarea {
+        width: 100%;
+        border-radius: 8px;
+        padding: 0 20px;
+        background-color: var(--white);
+        height: 100px;
+        resize: none;
       }
     }
     .fixBtn {
@@ -163,6 +218,67 @@
       gap: 14px;
     }
   }
+
+  &.fixed {
+    & > .leftColumn {
+      @media screen and (max-width: 1920px) {
+        padding-left: calc(6.75vw + 215px);
+        padding-right: 340px;
+      }
+      @media screen and (max-width: 1921px) {
+        padding-left: calc(129.6px + 215px);
+        padding-right: 340px;
+      }
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: calc(100% - 300px);
+        height: 60px;
+        background-color: var(--white);
+        z-index: 999;
+        padding-right: 40px;
+        box-shadow: -20px 4px 14px rgba(0, 0, 0, 0.5);
+        @media screen and (max-width: 1920px) {
+          padding-left: 6.75vw;
+        }
+        @media screen and (max-width: 1921px) {
+          padding-left: 129.6px;
+        }
+        .logo {
+          img {
+            width: 65px;
+          }
+          span {
+            font-size: 18px;
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+    & > .rightColumn {
+      position: fixed;
+      top: 0;
+      height: 100%;
+      background-color: var(--white);
+      @media screen and (max-width: 1920px) {
+        right: 0;
+      }
+      @media screen and (max-width: 1921px) {
+        right: 0;
+      }
+    }
+    .formStepMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 215px;
+      background-color: var(--gray-100);
+      left: 129.6px;
+      top: 60px;
+    }
+  }
 }
 .formStepMenu {
   width: 215px;
@@ -201,6 +317,30 @@
 .carValueFormWrapper {
   display: flex;
   align-items: flex-start;
+  padding-top: 150px;
+  position: relative;
+  &:before {
+    content: "";
+    height: 150px;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: var(--gray-100);
+    background: linear-gradient(
+      0deg,
+      rgba(237, 237, 237, 0) 0,
+      rgba(237, 237, 237, 1) 56%
+    );
+    z-index: 2;
+    @media screen and (max-width: 1920px) {
+      width: calc(100% - 300px - 215px - 6.75vw);
+      left: calc(6.75vw + 215px);
+    }
+    @media screen and (max-width: 1921px) {
+      width: calc(100% - 300px - 215px - 129.6px);
+      left: calc(129.6px + 215px);
+    }
+  }
   .formStepMenu {
     display: flex;
     flex-direction: column;
@@ -214,7 +354,6 @@
     .resultCarValue {
     }
     .formStepWrapper {
-      padding-top: 19px;
       .formStep {
         .stepSummary {
           height: 0;
@@ -222,17 +361,15 @@
           visibility: hidden;
           transition: all 0.3s linear;
           transform: translateY(30px);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
           &.show {
             height: auto;
             visibility: visible;
             opacity: 1;
             transform: translateY(0);
-          }
-
-          .editBtn {
-            visibility: hidden;
-            position: absolute;
-            opacity: 0;
+            padding-bottom: 20px;
           }
         }
         .formContent {
@@ -245,9 +382,23 @@
             height: auto;
             visibility: visible;
             opacity: 1;
+            padding-bottom: 50px;
           }
         }
+        .note {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          font-size: 13px;
+          color: #989898;
+          line-height: 20px;
+          font-weight: 400;
+        }
         &.active {
+          padding-top: 18px;
+          &:not(:first-child) {
+            padding-top: 30px;
+          }
           .formContent {
             height: auto;
             visibility: visible;
@@ -261,8 +412,6 @@
             height: 0;
             opacity: 0;
           }
-        }
-        &.completed {
           .stepSummary {
             height: auto;
             visibility: visible;
@@ -290,9 +439,55 @@
 
 .summaryItem {
   margin-bottom: 10px;
-}
-.summaryItem button.editBtn {
-  margin-top: 5px;
+  position: relative;
+  &:after {
+    content: "";
+    background-image: url("../../images/statics/icons/edit.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 30px;
+    position: absolute;
+    right: -50px;
+    top: 0px;
+    height: 32px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s linear;
+  }
+
+  .question {
+    color: var(--gray-150);
+    font-weight: 700;
+    transition: all 0.3s linear;
+  }
+  .answer {
+    color: var(--gray-150);
+    transition: all 0.3s linear;
+  }
+  .editBtn {
+    position: absolute;
+    width: calc(100% + 50px);
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+  @media screen and (min-width: 992px) {
+    &:hover {
+      cursor: pointer;
+      &:after {
+        opacity: 0.5;
+        visibility: visible;
+      }
+      .question {
+        color: var(--gray-250);
+      }
+      .answer {
+        color: var(--gray-250);
+      }
+    }
+  }
 }
 
 .selectColumn {

@@ -8,7 +8,6 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  height: 15px;
 
   /* Hide the browser's default checkbox */
   input {
@@ -22,10 +21,10 @@
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
-    top: 0;
+    top: 2px;
     left: 0;
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width:20px;
     background-color: #eee;
     border: 1px solid silver;
   }
@@ -52,11 +51,11 @@
   }
 
   .checkmark:after {
-    left: 5px;
+    left: 6px;
     top: 2px;
-    width: 2px;
-    height: 6px;
-    border: solid #626262;
+    width: 6px;
+    height: 11px;
+    border: solid var(--secondary);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }

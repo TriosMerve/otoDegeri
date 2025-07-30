@@ -1,0 +1,23 @@
+.header {
+  .logo {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    img {
+      max-height: 100%;
+      width: 94px;
+      transition: all .3s linear;
+    }
+    span {
+      font-size: 23px;
+      font-weight: 600;
+      color: var(--black);
+      transform: translateY(-5px);
+      transition: all .3s linear;
+      b {
+        color: var(--secondary);
+        font-weight: 600;
+      }
+    }
+  }
+}

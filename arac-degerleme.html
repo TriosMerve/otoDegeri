@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OtoDegeri.com | Araç Değerleme</title>
 
+
+
+    <!--Tüm platformlar ıcın faviconlar-->
+    <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon'">
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="public/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="public/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="public/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="public/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="public/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="public/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="public/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="public/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="public/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="public/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="public/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
+    <link rel="manifest" href="public/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="public/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--Tüm platformlar ıcın faviconlar bitiş-->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -20,9 +44,10 @@
     <div class="main carValueWrapper">
         <div class="leftColumn">
             <div class="header">
-                <a href="#" class="logo">OtoDeğeri.com</a>
-                <div class="menuDropdownWrapper">
-                    <a href="#" class="dropdownButton">Üye Girişi</a>
+                <a href="#" class="logo"><img src="public/images/statics/logo.png" alt="OtoDeğeri Logo"> <span>Oto<b>Değeri</b></span></a>
+                <div class="menuDropdownWrapper"><!--Login oldugunda auth class ı eklenır-->
+                    <a href="#" class="dropdownButton fixBtn button-secondary-outline"><img src="public/images/statics/icons/login.png" alt=""><span>Üye Girişi</span></a>
+                    <!-- <a href="#" class="dropdownButton fixBtn button-secondary"><span>Enver Sarıgül</span> <span class="menuIcon"><span class="line"></span></span></a> -->
                     <div class="dropdown">
                         <ul>
                             <li><a href="#">Çıkış</a></li>
@@ -259,10 +284,15 @@
                                         <label>Güncel kilometre bilgisini giriniz.</label>
                                     </div>
                                     <div class="form-groups">
-                                        <div class="inputColumn form-group">
-                                            <input type="text" placeholder="km">
+                                        <div class="form-group">
+                                            <div class="inputColumn">
+                                                <input type="text" placeholder="km">
+                                            </div>
+                                            <div class="note">
+                                                <img width="20" src="public/images/statics/icons/info-secondary.svg" alt="">
+                                                <span>250.000 KM üzeri araçların değerlemesi yapılmamaktadır.</span>
+                                            </div>
                                         </div>
-                                        <div class="note form-group">250.000 KM üzeri araçların değerlemesi yapılmamaktadır.</div>
                                     </div>
                                     <!-- <a href="#" class="prevButton fixBtn button-secondary">Geri Dön</a> -->
                                     <a href="#" class="nextButton fixBtn button-secondary disabled" disabled>DEVAM ET</a>
@@ -280,19 +310,19 @@
                                         <div class="tramerColumn">
                                             <div class="checkList">
                                                 <label class="containerCheck">
-                                                    <input type="radio" value="var" name="tramer"> 
-                                                    <span class="checkmark"></span>
-                                                    <span class="checkText">Var</span>
-                                                </label>
-                                                <label class="containerCheck">
                                                     <input type="radio" value="yok" name="tramer">
                                                     <span class="checkmark"></span>
                                                     <span class="checkText">Yok </span>
                                                 </label>
+                                                <label class="containerCheck">
+                                                    <input type="radio" value="var" name="tramer"> 
+                                                    <span class="checkmark"></span>
+                                                    <span class="checkText">Var</span>
+                                                </label>
 
                                             </div>
                                             <div id="tramerTutarAlani" class="input-container">
-                                                <label for="tramer-input">Tutar:</label>
+                                                <!-- <label for="tramer-input">Tutar:</label> -->
                                                 <input id="Tramer" class="tramerCss" inputmode="numeric" thousandseparator="." placeholder="0" oninput="formatKmValue(this);">
                                             </div>
                                         </div>
@@ -650,7 +680,14 @@
                                     <div class="formLabel" data-question="Tramer var ise giriniz.">
                                         <label>Aracınızın güncel fotoğrafları yükleyiniz.</label>
                                     </div>
-                                    <input type="file" placeholder="Fotoğraf yükle">
+                                    <div class="fileUploadColumn">
+                                        <label for="carImageInput" class="custom-file-upload">
+                                            <img width="20" src="public/images/statics/icons/upload-secondary.svg" alt="">
+                                            <span>Aracınızın fotoğraflarını yükleyin.</span>
+                                        </label>
+                                        <input type="file" id="carImageInput" accept=".jpg,.jpeg,.png" />
+                                        <span class="file-name">Henüz dosya seçilmedi</span>
+                                    </div>
 
                                     <!-- <a href="#" class="prevButton fixBtn button-secondary">Geri Dön</a> -->
                                     <a href="#" class="nextButton fixBtn button-secondary disabled" disabled>DEVAM ET</a>
@@ -662,36 +699,46 @@
                             <div class="formContent">
                                 <div class="form">
                                     <div class="form-groups">
-                                        <div class="form-group">
-                                            <div class="formLabel" data-question="Plakanızı giriniz">
-                                                <label for="Plakanızı giriniz"></label>
-                                            </div>
-                                            <div class="inputColumn">
-                                                <input type="text" placeholder="Plaka giriniz">
-                                            </div>
-                                            <div class="formLabel" data-question="E-Mail Adresiniz">
-                                                <label for="E-Mail Adresiniz"></label>
-                                            </div>
-                                            <div class="inputColumn">
-                                                <input type="email" placeholder="E-Mail Adresiniz">
-                                            </div>
-                                            <div class="formLabel" data-question="Telefon Numaranız">
-                                                <label for="Telefon Numaranız"></label>
-                                            </div>
-                                            <div class="inputColumn">
-                                                <input type="text" placeholder="Telefon Numaranız">
-                                            </div>
-                                            <label class="containerCheck">
-                                                <input type="radio" value="var" name="tramer"> 
-                                                <span class="checkmark"></span>
-                                                <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
-                                            </label>
-                                            <label class="containerCheck">
-                                                <input type="radio" value="var" name="tramer"> 
-                                                <span class="checkmark"></span>
-                                                <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
-                                            </label>
+                                        <div class="formLabel" data-question="Plakanızı giriniz">
+                                            <label>Plakanızı giriniz</label>
                                         </div>
+                                        <div class="inputColumn">
+                                            <input type="text" placeholder="Plaka giriniz">
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="formLabel" data-question="E-Mail Adresiniz">
+                                                    <label>E-Mail Adresiniz</label>
+                                                </div>
+                                                <div class="inputColumn">
+                                                    <input type="email" placeholder="E-Mail Adresiniz">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="formLabel" data-question="Telefon Numaranız">
+                                                    <label>Telefon Numaranız</label>
+                                                </div>
+                                                <div class="inputColumn">
+                                                    <input type="text" placeholder="Telefon Numaranız">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="formLabel" data-question="Araç Donanım Notları">
+                                            <label for="aracDonanimNotlari">Araç Donanım Notları</label>
+                                        </div>
+                                        <div class="textareColumn">
+                                            <textarea name="aracDonanimNotlari" id="aracDonanimNotlari"></textarea>
+                                        </div>
+                                        <label class="containerCheck">
+                                            <input type="checkbox" value="var" name="tramer"> 
+                                            <span class="checkmark"></span>
+                                            <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
+                                        </label>
+                                        <label class="containerCheck">
+                                            <input type="checkbox" value="var" name="tramer"> 
+                                            <span class="checkmark"></span>
+                                            <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>

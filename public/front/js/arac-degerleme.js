@@ -167,14 +167,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (label && (tableHTML.includes("<td>") || tramerValue)) {
           const html = `
             <div class="summaryItem" data-goto="${index}">
-                <strong>${label.textContent}</strong><br>
+                <div class="question">${label.textContent}</div><br>
                 ${
                   tramerValue
                     ? `<p><b>Tramer Tutarı:</b> ${tramerValue}</p>`
                     : ""
                 }
                 ${tableHTML}
-                <button class="editBtn">Düzenle</button>
+                <button class="editBtn"></button>
             </div>
           `;
           summaryContainer.innerHTML = html;
@@ -187,8 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (label && answers) {
         const html = `
           <div class="summaryItem" data-goto="${index}">
-            <strong>${label.textContent}</strong> <div class="answer">${answers}</div>
-            <button class="editBtn">Düzenle</button>
+            <div class="question">${label.textContent}</div> <div class="answer">${answers}</div>
+            <button class="editBtn"></button>
           </div>
         `;
         summaryContainer.innerHTML = html;
@@ -330,5 +330,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formStep) {
       validateStepForm(formStep);
     }
+  });
+  carImageInput.addEventListener("change", function () {
+    const fileName = this.files.length > 0 ? this.files[0].name : "Henüz dosya seçilmedi";
+    document.querySelector(".file-name").textContent = fileName;
   });
 });

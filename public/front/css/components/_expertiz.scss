@@ -1,8 +1,74 @@
+.tramerColumn {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  min-height: 55px;
+  margin-bottom: 50px;
+  .checkList {
+    gap: 40px;
+    display: flex;
+    align-items: center;
+  }
+  .containerCheck {
+    display: flex;
+    align-items: center;
+    min-height: initial;
+    gap: 15px;
+    padding-left: 0;
+    height: 15px;
+
+    .checkmark {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      border-color: var(--secondary);
+      overflow: hidden;
+      border-width: 2px;
+      top: 0;
+      &:after {
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+        transition: all 0.3s linear;
+      }
+    }
+    input[type="radio"]:checked ~ .checkmark {
+      &:after {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: var(--secondary);
+      }
+    }
+    input:checked ~ .checkmark {
+      border-color: #8c8c8c;
+    }
+    .checkText {
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+  .tramerCss {
+    font-size: 14px;
+    background-color: #fff;
+    border: 2px solid #e0e5ea;
+    padding: 8px;
+    margin: 0;
+    border-radius: 2px;
+    margin-left: 30px;
+  }
+}
 .ekspertizWrapper {
   display: flex;
   align-items: flex-start;
   gap: 50px;
-  padding-top: 100px;
+  background-color: var(--white);
+  padding: 40px 60px;
+  margin-top: 20px;
+  // padding-top: 100px;
   @media screen and (max-width: 991.98px) {
     flex-direction: column-reverse;
     padding: 0 30px;
@@ -22,35 +88,8 @@
     line-height: 24px;
     color: #363636;
     margin-bottom: 20px;
-    margin-top: 30px;
   }
-  .tramerColumn {
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    min-height: 40px;
-    .checkList {
-      gap: 30px;
-    }
-    .containerCheck {
-      display: flex;
-      align-items: center;
-      min-height: initial;
-      padding-left: 24px;
-      .checkmark {
-        top: 3px;
-      }
-    }
-    .tramerCss {
-      font-size: 14px;
-      background-color: #fff;
-      border: 2px solid #e0e5ea;
-      padding: 8px;
-      margin: 0;
-      border-radius: 2px;
-      margin-left: 30px;
-    }
-  }
+
   .carWrapper {
     width: 400px;
     position: relative;
@@ -93,6 +132,18 @@
     display: flex;
     align-items: center;
   }
+  .containerCheck {
+    .checkmark {
+      top: 0;
+      &:after {
+        left: 5px;
+        top: 2px;
+        width: 4px;
+        height: 8px;
+      }
+    }
+  }
+
   .carPartList {
     border: 2px solid #f0f0f0;
     padding: 0;
@@ -149,7 +200,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
     gap: 20px;
     @media screen and (max-width: 991.98px) {
       gap: 10px;
