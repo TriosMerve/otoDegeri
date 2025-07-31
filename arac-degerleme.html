@@ -48,12 +48,12 @@
             <div class="header">
                 <a href="#" class="logo"><img src="public/images/statics/logo.png" alt="OtoDeğeri Logo"> <span>Oto<b>Değeri</b></span></a>
                 <div class="menuDropdownWrapper"><!--Login oldugunda auth class ı eklenır-->
-                    <a href="#" class="dropdownButton fixBtn"><img src="public/images/statics/icons/login.png" alt=""><span>Üye Girişi</span></a>
+                    <a href="#" class="dropdownButton fixBtn button-secondary"><img src="public/images/statics/icons/login.png" alt=""><span>Üye Girişi</span></a>
                     <!-- <a href="#" class="dropdownButton fixBtn button-secondary"><span>Enver Sarıgül</span> <span class="menuIcon"><span class="line"></span></span></a> -->
                     <div class="dropdown">
                         <ul>
-                            <li><a href="#">Çıkış</a></li>
-                            <li><a href="#">Çıkış</a></li>
+                            <li><a href="#"><span>Profilim</span></a></li>
+                            <li><a href="#"><img src="public/images/statics/icons/logout.svg" alt=""><span>Çıkış</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     <li data-step="5">Kilometre Bilgisi</li>     
                     <li data-step="6">Tramer & Hasar Bilgisi</li>     
                     <li data-step="7">Fotoğraflar</li>     
-                    <li data-step="8">Kişisel Bilgiler</li>     
+                    <li data-step="8">Diğer Bilgiler</li>     
                 </ul>
                 <div class="carValueForm">
                     <div class="formStepWrapper">
@@ -308,23 +308,13 @@
                                     <div class="formLabel" data-question="Tramer var ise giriniz.">
                                         <label>Tramer var ise giriniz.</label>
                                     </div>
-                                    <div class="form-groups">
+                                    <div class="form-groups w-100">
                                         <div class="tramerColumn">
-                                            <div class="checkList">
-                                                <label class="containerCheck">
-                                                    <input type="radio" value="yok" name="tramer">
-                                                    <span class="checkmark"></span>
-                                                    <span class="checkText">Yok </span>
-                                                </label>
-                                                <label class="containerCheck">
-                                                    <input type="radio" value="var" name="tramer"> 
-                                                    <span class="checkmark"></span>
-                                                    <span class="checkText">Var</span>
-                                                </label>
-
-                                            </div>
+                                            <label class="custom-switch">
+                                                <input type="checkbox" name="tramer">
+                                                <span class="slider round"></span>
+                                            </label>
                                             <div id="tramerTutarAlani" class="input-container">
-                                                <!-- <label for="tramer-input">Tutar:</label> -->
                                                 <input id="tramerCount" class="tramerCount" placeholder="Tramer Tutarı TL">
                                             </div>
                                         </div>
@@ -695,8 +685,8 @@
                                             multiple 
                                             />
                                         <span class="file-name">Henüz dosya seçilmedi</span>
-                                        <div class="thumbnails" style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;"></div>
                                     </div>
+                                    <div class="thumbnails" style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;"></div>
 
                                     <!-- <a href="#" class="prevButton fixBtn button-secondary">Geri Dön</a> -->
                                     <a href="#" class="nextButton fixBtn button-secondary disabled" disabled>DEVAM ET</a>
@@ -707,14 +697,22 @@
                             <div class="stepSummary"></div>
                             <div class="formContent">
                                 <div class="form">
-                                    <div class="form-groups">
+                                    <div class="form-groups multiple">
                                         <div class="inputColumn plateColumn">
                                             <div class="formLabel" data-question="Plakanızı giriniz">
                                                 <label>Plakanızı giriniz</label>
                                             </div>
                                             <div class="validateColumn">
-                                                <input type="text" id="numberPlate" name="numberPlate" placeholder="Plaka giriniz" required>
+                                                <input type="text" id="numberPlate" name="numberPlate" class="numberPlateInput" placeholder="Plaka giriniz" required>
                                                 <span id="plakaError" class="error-message" >Geçersiz plaka formatı</span>
+                                            </div>
+                                        </div>
+                                         <div class="textareColumn">
+                                            <div class="formLabel" data-question="Araç Donanım Notları">
+                                                <label for="aracDonanimNotlari">Araç Donanım Notları</label>
+                                            </div>
+                                            <div class="validateColumn">
+                                                <textarea name="aracDonanimNotlari" id="aracDonanimNotlari"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -723,7 +721,7 @@
                                                     <label>E-Mail Adresiniz</label>
                                                 </div>
                                                 <div class="validateColumn">
-                                                    <input type="email" name="email2" placeholder="E-Mail Adresiniz">
+                                                    <input type="email" name="email2" placeholder="E-Mail Adresiniz" required>
                                                 </div>
                                             </div>
                                             <div class="inputColumn">
@@ -731,27 +729,20 @@
                                                     <label>Telefon Numaranız</label>
                                                 </div>
                                                 <div class="validateColumn">
-                                                    <input type="text" name="telefon" placeholder="Telefon Numaranız">
+                                                    <input type="text" name="telefon" placeholder="Telefon Numaranız" required>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="textareColumn">
-                                            <div class="formLabel" data-question="Araç Donanım Notları">
-                                                <label for="aracDonanimNotlari">Araç Donanım Notları</label>
-                                            </div>
-                                            <div class="validateColumn">
-                                                <textarea name="aracDonanimNotlari" id="aracDonanimNotlari"></textarea>
-                                            </div>
-                                        </div>
+                                       
                                         <label class="containerCheck">
-                                            <input type="checkbox" value="var" name="kvkk"> 
+                                            <input type="checkbox" value="var" name="kvkk" required> 
                                             <span class="checkmark"></span>
-                                            <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
+                                            <span class="checkText">Paylaşmış olduğum bilgilerin OtoDeğeri güvencesinde, incelediğim ve kabul ettiğim OtoDeğeri'nin <a href="#" target="_blank">Kişisel Verilerin Korunması</a> ve İşlenmesine İlişkin Aydınlatma Metnini okudum.</span>
                                         </label>
                                         <label class="containerCheck">
-                                            <input type="checkbox" value="var" name="kvkk2"> 
+                                            <input type="checkbox" value="var" name="kvkk2" required> 
                                             <span class="checkmark"></span>
-                                            <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
+                                            <span class="checkText"><a href="#" target="_blank">Reklam ve ticari ileti rıza beyanını okuduğumu ve onayladığımı kabul ederim</a></span>
                                         </label>
                                     </div>
                                     <button type="submit" class="nextButton fixBtn button-secondary disabled" disabled>GÖNDER</button>
@@ -761,6 +752,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="footer">
+                <div class="copyRight">&copy;  OtoDegeri.com</div>
             </div>
         </div>
         <div class="rightColumn">

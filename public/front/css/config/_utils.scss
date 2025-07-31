@@ -13,7 +13,9 @@
   --white: #ffffff;
 
   --gray-50: #f9f9f9;
+  --gray-75: #ededed;
   --gray-100: #ededed;
+  --gray-125: #dbd9d9;
   --gray-150: #9c9c9c;
   --gray-200: #808080;
   --gray-250: #6e6e6e;
@@ -44,7 +46,9 @@ $colors: (
   "black": var(--black),
   "white": var(--whit),
   "gray-50": var(--gray-50),
+  "gray-75": var(--gray-75),
   "gray-100": var(--gray-100),
+  "gray-125": var(--gray-125),
   "gray-150": var(--gray-150),
   "gray-200": var(--gray-200),
   "gray-250": var(--gray-250),
@@ -125,7 +129,8 @@ $colors: (
   transition: all 0.3s linear;
   border: 1px solid var(--gray-50);
   border-radius: 8px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 15px;
   min-width: 180px;
   @media screen and (max-width: 991.98px) {
     padding: 0 8px;
@@ -209,11 +214,15 @@ $colors: (
 input,
 button {
   outline: 0;
-  &:focus{
+  &:focus {
     outline: 0;
   }
 }
 
 :focus-visible {
-    outline:0!important;
+  outline: 0 !important;
+}
+
+.w-100{
+  width: 100%!important;
 }

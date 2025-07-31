@@ -4,6 +4,11 @@
   font-size: 15px;
   min-height: 55px;
   margin-bottom: 50px;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 30px 20px;
+  width: 100%;
+
   .checkList {
     gap: 14px;
     display: flex;
@@ -70,22 +75,24 @@
     border-radius: 2px;
     margin-left: 10px;
     height: 50px;
-    border: 1px solid var(--white);
-    border-radius:4px;
+    border: 1px solid var(--gray-75);
+    border-radius: 4px;
+    background: var(--gray-75);
+    color: var(--gray-300);
+    font-weight: 500;
     &.disabled {
-      border-color: var(--gray-500);
-      background: var(--gray-500);
-      color: var(--white);
-      opacity: 0.5;
+      border-color: var(--gray-75);
+      background: var(--gray-75);
+      color: var(--gray-250);
 
       &::placeholder {
-        color: var(--white);
+        color: var(--gray-250);
       }
       &::-moz-placeholder {
-        color: var(--white);
+        color: var(--gray-250);
       }
       &::-webkit-input-placeholder {
-        color: var(--white);
+        color: var(--gray-250);
       }
     }
   }
@@ -288,22 +295,34 @@
       }
     }
   }
-  .path-original {
-    fill: #ffffff !important;
-  }
-  .path-cizik {
-    fill: #f9a825 !important;
-  }
-  .path-boyali {
-    fill: hsl(59, 100%, 48%) !important;
-  }
-  .path-degismis {
-    fill: #d32f2f !important;
-  }
 
   .path-hover {
-    fill: rgba(210, 168, 81);
+    fill: rgba(210, 168, 81) !important;
     transition: all 0.3s ease;
+    .path-original {
+      fill: #ffffff !important;
+    }
+    &.path-cizik {
+      fill: #f9a825 !important;
+    }
+    &.path-boyali {
+      fill: hsl(59, 100%, 48%) !important;
+    }
+    &.path-degismis {
+      fill: #d32f2f !important;
+    }
+  }
+  .path-original {
+    fill: #ffffff;
+  }
+  .path-cizik {
+    fill: #f9a825;
+  }
+  .path-boyali {
+    fill: hsl(59, 100%, 48%);
+  }
+  .path-degismis {
+    fill: #d32f2f;
   }
 }
 .statusButton {

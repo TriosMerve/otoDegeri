@@ -1,12 +1,15 @@
 .carValueWrapper {
   display: flex;
   align-items: stretch;
+  width: 100%;
+  min-height: calc(100vh + 60px);
   h1 {
     font-size: 30px;
     line-height: 40px;
     font-weight: 600;
     color: var(--black);
     margin-bottom: 30px;
+    margin-top: -7px;
     b {
       color: var(--secondary);
       font-weight: 600;
@@ -18,10 +21,10 @@
     border-radius: 8px;
     padding: 30px;
     margin-top: 10px;
-    min-width: 400px;
 
     table {
       width: 100%;
+      max-width: 500px;
       tr {
         th,
         td {
@@ -54,14 +57,18 @@
   }
   & > .leftColumn {
     flex: 1;
-    background-color: var(--gray-100);
+    background-color: var(--gray-75);
     position: relative;
     padding-right: 40px;
     @media screen and (max-width: 1920px) {
-      padding-left: 6.75vw;
+      max-width: calc(100% - (336px + 6.75vw));
+      padding-left: calc(6.75vw + 215px);
+      // padding-right: calc(340px + 6.75vw);
     }
-    @media screen and (max-width: 1921px) {
-      padding-left: 129.6px;
+    @media screen and (min-width: 1921px) {
+      max-width: calc(100% - (336px + 129.6px));
+      padding-left: calc(129.6px + 215px);
+      // padding-right: calc(340px + 129.6px);
     }
     .header {
       display: flex;
@@ -71,15 +78,20 @@
       align-items: center;
       transition: all 0.3s linear;
       position: fixed;
-      width: calc(100% - 300px);
+      width: 100%;
       left: 0;
       padding-right: 40px;
+      background: var(--gray-100);
       z-index: 9;
       @media screen and (max-width: 1920px) {
         padding-left: 6.75vw;
+        // padding-right: calc(336px + 6.75vw + 40px);
+        width: calc(100% - (6.75vw + 336px));
       }
-      @media screen and (max-width: 1921px) {
+      @media screen and (min-width: 1921px) {
         padding-left: 129.6px;
+        // padding-right: calc(336px + 129.6px + 40px);
+        width: calc(100% - (129.6px + 336px));
       }
       .menuDropdownWrapper {
         margin-left: auto;
@@ -89,43 +101,108 @@
           font-weight: 600;
           gap: 30px;
           height: 50px;
-          background-color: var(--white);
-          color: var(--secondary);
-
+          // background-color: var(--white);
+          // color: var(--secondary);
+          img {
+            filter: invert(70%) brightness(4.5);
+          }
           @media screen and (min-width: 992px) {
             &:hover {
-              background-color: var(--secondary);
-              color: var(--white);
+              // background-color: var(--secondary);
+              // color: var(--white);
 
               img {
-                filter: invert(70%) brightness(4.5);
+                filter: none;
               }
             }
           }
         }
       }
+      &:before {
+        content: "";
+        height: 36px;
+        top: 100%;
+        left: 0;
+        position: absolute;
+        background-color: var(--gray-50);
+        background: linear-gradient(
+          0deg,
+          rgba(237, 237, 237, 0) 0,
+          rgba(237, 237, 237, 1) 56%
+        );
+        z-index: 2;
+        width: 100%;
+      }
     }
-
+    .footer {
+      height: 60px;
+      background-color: var(--gray-75);
+      border-top: 1px solid var(--gray-125);
+      position: relative;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      z-index: 9;
+      padding-right: 40px;
+      @media screen and (max-width: 1920px) {
+        padding-left: 6.75vw;
+        // padding-right: calc(336px + 6.75vw + 40px);
+        width: calc(100% + (215px + 6.75vw + 40px));
+        margin-left: calc(-6.75vw - 215px);
+      }
+      @media screen and (min-width: 1921px) {
+        padding-left: 129.6px;
+        width: calc(100% + (215px + 129.6px + 40px));
+        margin-left: calc(-129.6px - 215px);
+        // padding-right: calc(336px + 129.6px + 40px);
+      }
+    }
     .carValueFormWrapper {
-      height: calc(100% - 100px);
+      height: 100%;
     }
   }
   & > .rightColumn {
-    width: 300px;
-    min-width: 300px;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    background-color: var(--white);
+    overflow: hidden;
+    // overflow-y: auto;
+    &::-webkit-scrollbar {
+      background-color: var(--gray-100);
+      border-radius: 4px;
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--secondary);
+      border-radius: 4px;
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 4px;
+      background-color: var(--gray-100);
+      width: 8px;
+    }
+
     @media screen and (max-width: 1920px) {
+      right: 0;
+      width: calc(336px + 6.75vw);
+      min-width: calc(336px + 6.75vw);
       padding-right: 6.75vw;
     }
-    @media screen and (max-width: 1921px) {
+    @media screen and (min-width: 1921px) {
+      right: 0;
       padding-right: 129.6px;
+      width: calc(336px + 129.6px);
+      min-width: calc(336px + 129.6px);
     }
 
     .rightContentWrapper {
       width: 100%;
       max-height: 100%;
-      overflow: hidden;
-      overflow-y: auto;
       padding: 20px 30px 50px;
+      padding-top: 137px;
 
       .imageWrapper {
         width: 100%;
@@ -146,7 +223,7 @@
       font-weight: 500;
       font-size: 15px;
       color: var(--black);
-      padding-bottom: 16px;
+      padding-bottom: 5px;
       padding-left: 10px;
     }
     .validateColumn {
@@ -162,7 +239,7 @@
           height: 24px;
           margin-left: auto;
           position: absolute;
-          top: 17px;
+          top: 15px;
           right: 14px;
         }
       }
@@ -191,6 +268,7 @@
         padding: 0 20px;
         padding-right: 40px;
         font-size: 14px;
+        box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
 
         &::placeholder {
           color: var(--gray-250);
@@ -215,17 +293,16 @@
         }
       }
     }
-    .plateColumn {
-      margin-bottom: 20px;
-    }
     .textareColumn {
+      margin-bottom: 30px;
       width: 100%;
+      // margin-top: 20px;
       textarea {
         width: 100%;
         border-radius: 8px;
-        padding: 0 20px;
+        padding: 15px 20px;
         background-color: var(--white);
-        height: 100px;
+        height: 200px;
         resize: none;
       }
     }
@@ -306,9 +383,10 @@
     min-width: 216px;
     width: 216px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--black);
     gap: 10px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     input[type="radio"] {
       width: 26px;
@@ -366,91 +444,46 @@
       align-items: center;
       gap: 14px;
     }
+    &.multiple {
+      gap: 35px;
+      .containerCheck {
+        .error-message {
+          left: 27px;
+        }
+      }
+    }
   }
-
   &.fixed {
-    & > .leftColumn {
-      @media screen and (max-width: 1920px) {
-        padding-left: calc(6.75vw + 215px);
-        padding-right: 340px;
-      }
-      @media screen and (max-width: 1921px) {
-        padding-left: calc(129.6px + 215px);
-        padding-right: 340px;
-      }
-      .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 80px;
-        background-color: var(--white);
-        z-index: 999;
-        padding-right: 340px;
-        box-shadow: -20px 4px 14px rgba(0, 0, 0, 0.5);
-        @media screen and (max-width: 1920px) {
-          padding-left: 6.75vw;
-        }
-        @media screen and (max-width: 1921px) {
-          padding-left: 129.6px;
-        }
-        .fixBtn {
-          background-color: var(--secondary);
-          color: var(--white);
-          border: 1px solid var(--secondary);
-          img {
-            filter: invert(70%) brightness(4.5);
-          }
-          @media screen and (min-width: 992px) {
-            &:hover {
-              background-color: var(--white);
-              color: var(--secondary);
-
-              img {
-                filter: none;
-              }
-            }
-          }
-        }
-        .logo {
-          img {
-            width: 65px;
-          }
-          span {
-            font-size: 18px;
-            transform: translateY(0);
-          }
-        }
-      }
-    }
-    & > .rightColumn {
-      position: fixed;
-      top: 0;
-      height: 100%;
-      background-color: var(--white);
-      @media screen and (max-width: 1920px) {
-        right: 0;
-      }
-      @media screen and (max-width: 1921px) {
-        right: 0;
-      }
-      .rightContentWrapper {
-        padding-top: 120px;
-      }
-    }
-    .formStepMenu {
-      position: fixed;
-      left: 0;
-      height: 100%;
-      width: 215px;
-      background-color: var(--gray-100);
-      left: 129.6px;
-      top: 120px;
+    .carValueFormWrapper {
     }
   }
 }
 .formStepMenu {
+  position: fixed;
+  left: 0;
+  // height: 100%;
   width: 215px;
+  // background-color: var(--gray-100);
+  left: 129.6px;
+  top: 120px;
+  max-height: calc(100% - 205px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    background-color: var(--gray-100);
+    border-radius: 4px;
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: 4px;
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: var(--gray-100);
+    width: 8px;
+  }
   li {
     cursor: default;
     font-size: 14px;
@@ -466,7 +499,22 @@
       width: 14px;
       height: 14px;
       border-radius: 100%;
-      border: 4px solid var(--gray-200);
+      border: 3px solid var(--gray-125);
+      background-color: var(--gray-50);
+      z-index: 2;
+      transition: all 0.3s linear;
+    }
+    &:not(:first-child) {
+      &:after {
+        content: "";
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        left: 6px;
+        bottom: calc(100% - 27px);
+        background-color: var(--secondary);
+        transition: all 0.3s linear;
+      }
     }
     &.active {
       color: var(--secondary);
@@ -476,6 +524,9 @@
     }
     &.disabled {
       color: var(--gray-200);
+      &:after {
+        background-color: var(--gray-150);
+      }
       &:before {
         border-color: var(--gray-150);
       }
@@ -486,30 +537,9 @@
 .carValueFormWrapper {
   display: flex;
   align-items: flex-start;
-  padding-top: 150px;
+  padding-top: 120px;
   position: relative;
-  &:before {
-    content: "";
-    height: 150px;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background-color: var(--gray-100);
-    background: linear-gradient(
-      0deg,
-      rgba(237, 237, 237, 0) 0,
-      rgba(237, 237, 237, 1) 56%
-    );
-    z-index: 2;
-    @media screen and (max-width: 1920px) {
-      width: calc(100% - 300px - 215px - 6.75vw);
-      left: calc(6.75vw + 215px);
-    }
-    @media screen and (max-width: 1921px) {
-      width: calc(100% - 300px - 215px - 129.6px);
-      left: calc(129.6px + 215px);
-    }
-  }
+
   .formStepMenu {
     display: flex;
     flex-direction: column;
@@ -517,13 +547,30 @@
   .carValueForm {
     width: calc(100% - 215px);
     padding-left: 4.6875vw;
+    padding-bottom: 100px;
     @media screen and (min-width: 1921px) {
       padding-left: 90px;
     }
     .resultCarValue {
     }
     .formStepWrapper {
+      transition: all 0.3s linear;
       .formStep {
+        &:not(:first-child) {
+          .summaryItem {
+            border-top: 1px solid var(--gray-125);
+          }
+        }
+        @media screen and (min-width: 992px) {
+          &:hover {
+            .summaryItem {
+              border-top-color: rgba(0, 0, 0, 0);
+            }
+            & ~ .formStep .summaryItem {
+              border-top-color: rgba(0, 0, 0, 0);
+            }
+          }
+        }
         .stepSummary {
           height: 0;
           opacity: 0;
@@ -538,7 +585,6 @@
             visibility: visible;
             opacity: 1;
             transform: translateY(0);
-            padding-bottom: 20px;
           }
         }
         .formContent {
@@ -570,8 +616,9 @@
           }
           .formContent {
             height: auto;
-            min-height: 350px;
+            // min-height: 350px;
             visibility: visible;
+            overflow: visible;
             opacity: 1;
           }
         }
@@ -588,11 +635,34 @@
             opacity: 1;
           }
         }
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.5;
+        }
+      }
+
+      &.disabled {
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        height: 0;
       }
     }
   }
 }
-
+.thankYouMessage {
+  .title {
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 42px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+}
 .summaryExpertizTable {
   width: 100%;
   border-collapse: collapse;
@@ -608,16 +678,38 @@
 }
 
 .summaryItem {
-  margin-bottom: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-
+  padding-left: 10px;
+  padding: 20px 0;
+  transition: all 0.3s linear;
+  &:after {
+    content: "Düzenle";
+    background-image: url("../../images/statics/icons/edit-secondary.svg");
+    background-repeat: no-repeat;
+    background-size: 24px 30px;
+    background-position: left;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    height: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s linear;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--secondary);
+  }
   .question {
     color: var(--gray-150);
     font-weight: 400;
+    font-size: 15px;
     transition: all 0.3s linear;
   }
   .answer {
@@ -625,6 +717,8 @@
     transition: all 0.3s linear;
     font-weight: 500;
     position: relative;
+    font-size: 14px;
+    width: 100%;
     p {
       color: var(--gray-150);
       transition: all 0.3s linear;
@@ -632,21 +726,6 @@
       b {
         font-weight: 500;
       }
-    }
-    &:after {
-      content: "";
-      background-image: url("../../images/statics/icons/edit-secondary.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      width: 18px;
-      position: absolute;
-      right: -30px;
-      top: 0px;
-      height: 24px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s linear;
     }
   }
   .editBtn {
@@ -660,7 +739,15 @@
   @media screen and (min-width: 992px) {
     &:hover {
       cursor: pointer;
+      background-color: var(--white);
+      padding: 20px;
+      border-top-color: rgba(0, 0, 0, 0);
+      border-radius: 8px;
 
+      &:after {
+        opacity: 1;
+        visibility: visible;
+      }
       .question {
         color: var(--gray-250);
       }
@@ -668,10 +755,6 @@
         color: var(--gray-250);
         p {
           color: var(--gray-250);
-        }
-        &:after {
-          opacity: 0.5;
-          visibility: visible;
         }
       }
     }
@@ -726,6 +809,7 @@
 .ts-wrapper {
   &.dropdown-active {
     .ts-control {
+      box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
       &:after {
         border-color: transparent transparent grey;
         border-width: 0 5px 5px;
@@ -749,6 +833,21 @@
     gap: 5px;
   }
   .ts-dropdown-content {
+    &::-webkit-scrollbar {
+      background-color: var(--gray-100);
+      border-radius: 4px;
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--secondary);
+      border-radius: 4px;
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 4px;
+      background-color: var(--gray-100);
+      width: 6px;
+    }
     .option {
       min-height: 45px;
       display: flex;
@@ -781,15 +880,21 @@
 
 .error-message {
   color: var(--error);
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 12px;
   position: absolute;
-  background-color: var(--white);
+  // background-color: var(--white);
   padding: 1px 8px;
   border-radius: 4px;
-  top: calc(100% - 10px);
+  top: calc(100% + 2px);
   z-index: 2;
   left: 6px;
+  display: none;
+}
+.invalid {
+  .error-message {
+    display: block;
+  }
 }
 
 // .selectColumn {
