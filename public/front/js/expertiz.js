@@ -177,35 +177,35 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const tramerRadios = document.querySelectorAll('input[name="tramer"]');
-//   const tramerTutarAlani = document.getElementById("tramerTutarAlani");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const tramerRadios = document.querySelectorAll('input[name="tramer"]');
+// //   const tramerTutarAlani = document.getElementById("tramerTutarAlani");
 
-  function toggleTramerInput() {
-    const selectedText = this.parentElement.querySelector(".checkText").textContent.trim().toLowerCase();
-    if (selectedText === "var") {
-      tramerTutarAlani.style.display = "block";
-    } else {
-      tramerTutarAlani.style.display = "none";
-    }
-  }
+//   function toggleTramerInput() {
+//     const selectedText = this.parentElement.querySelector(".checkText").textContent.trim().toLowerCase();
+//     if (selectedText === "var") {
+//       tramerTutarAlani.style.display = "block";
+//     } else {
+//       tramerTutarAlani.style.display = "none";
+//     }
+//   }
 
-  tramerRadios.forEach((radio) => {
-    radio.addEventListener("change", toggleTramerInput);
-  });
+//   tramerRadios.forEach((radio) => {
+//     radio.addEventListener("change", toggleTramerInput);
+//   });
 
-  // Sayfa yüklendiğinde ilk durumu kontrol et
-  const checkedRadio = document.querySelector('input[name="tramer"]:checked');
-  if (checkedRadio) {
-    const selectedText = checkedRadio.parentElement.querySelector(".checkText").textContent.trim().toLowerCase();
-    tramerTutarAlani.style.display = selectedText === "var" ? "block" : "none";
-  } else {
-    tramerTutarAlani.style.display = "none"; // varsayılan kapalı
-  }
-});
+//   // Sayfa yüklendiğinde ilk durumu kontrol et
+//   const checkedRadio = document.querySelector('input[name="tramer"]:checked');
+//   if (checkedRadio) {
+//     const selectedText = checkedRadio.parentElement.querySelector(".checkText").textContent.trim().toLowerCase();
+//     tramerTutarAlani.style.display = selectedText === "var" ? "block" : "none";
+//   } else {
+//     tramerTutarAlani.style.display = "none"; // varsayılan kapalı
+//   }
+// });
 
-if (this.value === "var") {
-  tramerTutarAlani.style.display = "block";
-} else {
-  tramerTutarAlani.style.display = "none";
-}
+// if (this.value === "var") {
+//   tramerTutarAlani.style.display = "block";
+// } else {
+//   tramerTutarAlani.style.display = "none";
+// }

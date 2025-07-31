@@ -34,7 +34,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="public/plugin/fancyapps/fancybox.css">
     <link rel="stylesheet" href="public/front/css/app.min.css">
 </head>
 <body>
@@ -46,7 +48,7 @@
             <div class="header">
                 <a href="#" class="logo"><img src="public/images/statics/logo.png" alt="OtoDeğeri Logo"> <span>Oto<b>Değeri</b></span></a>
                 <div class="menuDropdownWrapper"><!--Login oldugunda auth class ı eklenır-->
-                    <a href="#" class="dropdownButton fixBtn button-secondary-outline"><img src="public/images/statics/icons/login.png" alt=""><span>Üye Girişi</span></a>
+                    <a href="#" class="dropdownButton fixBtn"><img src="public/images/statics/icons/login.png" alt=""><span>Üye Girişi</span></a>
                     <!-- <a href="#" class="dropdownButton fixBtn button-secondary"><span>Enver Sarıgül</span> <span class="menuIcon"><span class="line"></span></span></a> -->
                     <div class="dropdown">
                         <ul>
@@ -81,12 +83,12 @@
                                         <div class="form-groups">
                                             <div class="form-group">
                                                 <label class="radioContainer">
-                                                    <input type="radio" class="summaryInclude" name="uyelikSecimi" value="evet" />
+                                                    <input type="radio" class="summaryInclude" name="uyelikSecimi" value="evet" required />
                                                     <span class="checkcircle"></span>
                                                     EVET
                                                 </label>
                                                 <label class="radioContainer">
-                                                    <input type="radio" class="summaryInclude" name="uyelikSecimi" value="hayir" />
+                                                    <input type="radio" class="summaryInclude" name="uyelikSecimi" value="hayir" required />
                                                     <span class="checkcircle"></span>
                                                     HAYIR
                                                 </label>
@@ -102,11 +104,11 @@
                                     </div>
                                     <div class="form-groups">
                                         <div class="form-group">
-                                            <div class="inputColumn">
-                                                <input type="text" placeholder="Adınız" required>
+                                            <div class="inputColumn validateColumn">
+                                                <input type="text" name="ad" placeholder="Adınız" required>
                                             </div>
-                                            <div class="inputColumn">
-                                                <input type="text" placeholder="Soyadınız" required>
+                                            <div class="inputColumn validateColumn">
+                                                <input type="text" name="soyad" placeholder="Soyadınız" required>
                                             </div>
                                         </div>
                                     </div>
@@ -120,11 +122,11 @@
                                         <label>Üyelik bilgilerinizi giriniz</label>
                                     </div>
                                     <div class="form-groups">
-                                        <div class="inputColumn">
-                                            <input type="email" placeholder="E-posta adresiniz" required>
+                                        <div class="inputColumn validateColumn">
+                                            <input type="email" name="email" placeholder="E-posta adresiniz" required>
                                         </div>
-                                        <div class="inputColumn">
-                                            <input type="password" placeholder="Şifreniz" required>
+                                        <div class="inputColumn validateColumn">
+                                            <input type="password" name="password" placeholder="Şifreniz" required>
                                         </div>
                                         <a href="#" class="textLink">Şifremi Unuttum</a>
                                     </div>
@@ -142,8 +144,8 @@
                                     </div>
                                     <div class="form-groups">
                                         <div class="selectColumn">
-                                            <select id="modelyil" name="modelyil" class="customSelect" required>
-                                                <option value="" default selected disabled>Model Yılı Seçiniz</option>
+                                            <select id="modelyil" name="modelyil" class="customSelect" data-placeholder="Model Yılı Seçiniz" required autocomplete="off">
+                                                <option value="">Model Yılı Seçiniz</option>
                                                 <option value="2016">2016</option>
                                                 <option value="2015">2015</option>
                                                 <option value="2014">2014</option>
@@ -167,8 +169,8 @@
                                     <div class="form-groups">
                                         <div class="form-group">
                                             <div class="selectColumn">
-                                                <select id="marka" name="marka" class="customSelect" required>
-                                                    <option value="" default selected disabled>Marka Seçiniz</option>
+                                                <select id="marka" name="marka" class="customSelect" required autocomplete="off">
+                                                    <option value="">Marka Seçiniz</option>
                                                     <option value="Volkswagen">Volkswagen</option>
                                                     <option value="Renault">Renault</option>
                                                     <option value="Ford">Ford</option>
@@ -179,8 +181,8 @@
                                                 </select>
                                             </div>
                                             <div class="selectColumn">
-                                                <select id="model" name="model" class="customSelect" required>
-                                                    <option value="" default selected disabled>Model Seçiniz</option>
+                                                <select id="model" name="model" class="customSelect" required autocomplete="off">
+                                                    <option value="">Model Seçiniz</option>
                                                     <option value="Golf">Golf</option>
                                                     <option value="Passat">Passat</option>
                                                     <option value="Polo">Polo</option>
@@ -252,7 +254,7 @@
                                         <div class="form-group">
                                             <div class="selectColumn">
                                                 <select id="vites" name="vites" class="customSelect" required>
-                                                    <option value="" default selected disabled>Marka Seçiniz</option>
+                                                    <option value="" default selected disabled>Vites Tipi</option>
                                                     <option value="Manuel">Manuel</option>
                                                     <option value="Otomatik">Otomatik</option>
                                                     <option value="YariOtomatik">Yarı Otomatik (Tiptronic / DSG / EDC)</option>
@@ -260,7 +262,7 @@
                                             </div>
                                             <div class="selectColumn">
                                                 <select id="yakit" name="yakit" class="customSelect" required>
-                                                    <option value="" default selected disabled>Model Seçiniz</option>
+                                                    <option value="" default selected disabled>Yakıt Tipi</option>
                                                     <option value="Benzin">Benzin</option>
                                                     <option value="Dizel">Dizel</option>
                                                     <option value="Otogaz">LPG (Otogaz)</option>
@@ -285,8 +287,8 @@
                                     </div>
                                     <div class="form-groups">
                                         <div class="form-group">
-                                            <div class="inputColumn">
-                                                <input type="text" placeholder="km">
+                                            <div class="inputColumn validateColumn">
+                                                <input type="text" name="kilometre" placeholder="Aracınızın kilometre bilgisini giriniz">
                                             </div>
                                             <div class="note">
                                                 <img width="20" src="public/images/statics/icons/info-secondary.svg" alt="">
@@ -323,7 +325,7 @@
                                             </div>
                                             <div id="tramerTutarAlani" class="input-container">
                                                 <!-- <label for="tramer-input">Tutar:</label> -->
-                                                <input id="Tramer" class="tramerCss" inputmode="numeric" thousandseparator="." placeholder="0" oninput="formatKmValue(this);">
+                                                <input id="tramerCount" class="tramerCount" placeholder="Tramer Tutarı TL">
                                             </div>
                                         </div>
                                     </div>
@@ -685,8 +687,15 @@
                                             <img width="20" src="public/images/statics/icons/upload-secondary.svg" alt="">
                                             <span>Aracınızın fotoğraflarını yükleyin.</span>
                                         </label>
-                                        <input type="file" id="carImageInput" accept=".jpg,.jpeg,.png" />
+                                        <input 
+                                            type="file" 
+                                            name="carImg[]" 
+                                            id="carImageInput" 
+                                            accept=".jpg,.jpeg,.png" 
+                                            multiple 
+                                            />
                                         <span class="file-name">Henüz dosya seçilmedi</span>
+                                        <div class="thumbnails" style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;"></div>
                                     </div>
 
                                     <!-- <a href="#" class="prevButton fixBtn button-secondary">Geri Dön</a> -->
@@ -699,47 +708,54 @@
                             <div class="formContent">
                                 <div class="form">
                                     <div class="form-groups">
-                                        <div class="formLabel" data-question="Plakanızı giriniz">
-                                            <label>Plakanızı giriniz</label>
-                                        </div>
-                                        <div class="inputColumn">
-                                            <input type="text" placeholder="Plaka giriniz">
+                                        <div class="inputColumn plateColumn">
+                                            <div class="formLabel" data-question="Plakanızı giriniz">
+                                                <label>Plakanızı giriniz</label>
+                                            </div>
+                                            <div class="validateColumn">
+                                                <input type="text" id="numberPlate" name="numberPlate" placeholder="Plaka giriniz" required>
+                                                <span id="plakaError" class="error-message" >Geçersiz plaka formatı</span>
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <div>
+                                            <div class="inputColumn">
                                                 <div class="formLabel" data-question="E-Mail Adresiniz">
                                                     <label>E-Mail Adresiniz</label>
                                                 </div>
-                                                <div class="inputColumn">
-                                                    <input type="email" placeholder="E-Mail Adresiniz">
+                                                <div class="validateColumn">
+                                                    <input type="email" name="email2" placeholder="E-Mail Adresiniz">
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div class="inputColumn">
                                                 <div class="formLabel" data-question="Telefon Numaranız">
                                                     <label>Telefon Numaranız</label>
                                                 </div>
-                                                <div class="inputColumn">
-                                                    <input type="text" placeholder="Telefon Numaranız">
+                                                <div class="validateColumn">
+                                                    <input type="text" name="telefon" placeholder="Telefon Numaranız">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="formLabel" data-question="Araç Donanım Notları">
-                                            <label for="aracDonanimNotlari">Araç Donanım Notları</label>
-                                        </div>
                                         <div class="textareColumn">
-                                            <textarea name="aracDonanimNotlari" id="aracDonanimNotlari"></textarea>
+                                            <div class="formLabel" data-question="Araç Donanım Notları">
+                                                <label for="aracDonanimNotlari">Araç Donanım Notları</label>
+                                            </div>
+                                            <div class="validateColumn">
+                                                <textarea name="aracDonanimNotlari" id="aracDonanimNotlari"></textarea>
+                                            </div>
                                         </div>
                                         <label class="containerCheck">
-                                            <input type="checkbox" value="var" name="tramer"> 
+                                            <input type="checkbox" value="var" name="kvkk"> 
                                             <span class="checkmark"></span>
                                             <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
                                         </label>
                                         <label class="containerCheck">
-                                            <input type="checkbox" value="var" name="tramer"> 
+                                            <input type="checkbox" value="var" name="kvkk2"> 
                                             <span class="checkmark"></span>
                                             <span class="checkText"><a href="#">KVKK</a> metnini onaylıyorum</span>
                                         </label>
                                     </div>
+                                    <button type="submit" class="nextButton fixBtn button-secondary disabled" disabled>GÖNDER</button>
+
                                 </div>
                             </div>
                         </div>
@@ -748,7 +764,11 @@
             </div>
         </div>
         <div class="rightColumn">
-            Reklam alanı
+            <div class="rightContentWrapper">
+                <div class="imageWrapper">
+                    <img src="public/images/media/reklam.png" alt="">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -785,7 +805,8 @@
     </dialog>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/js/tom-select.complete.min.js"></script>
+    <script src="public/plugin/fancyapps/fancybox.umd.js"></script>
 
     <script src="public/front/js/app.js" defer></script>
     <script src="public/front/js/arac-degerleme.js" defer></script>
@@ -793,8 +814,14 @@
 
     <script>
         $(document).ready(function() {
-            $('.customSelect').select2({
-                // allowClear: true
+            $('.customSelect').each(function() {
+                new TomSelect(this, {
+                    create: true,
+                    sortField: {
+                        field: "text",
+                        direction: "asc"
+                    }
+                });
             });
         });
     </script>

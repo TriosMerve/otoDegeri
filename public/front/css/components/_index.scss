@@ -1,7 +1,7 @@
-@import "arac-degerleme";
-@import "custom-check";
-@import "expertiz";
-@import "dialog";
-@import "custom-fileupload";
-@import "header";
-@import "custom-dropdown";
+@forward "arac-degerleme";
+@forward "custom-check";
+@forward "expertiz";
+@forward "dialog";
+@forward "custom-fileupload";
+@forward "header";
+@forward "custom-dropdown";

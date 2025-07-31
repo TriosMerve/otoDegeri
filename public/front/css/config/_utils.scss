@@ -75,15 +75,15 @@ $colors: (
     }
     .button-#{$name}-outline {
       &:not(.disabled) {
-        background-color: rgba(0,0,0,0);
-        border:1px solid $color;
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid $color;
         color: $color;
         @media screen and (min-width: 992px) {
           &:hover {
             background-color: var(--white) !important;
             color: $color !important;
-            img{
-              filter: none!important;
+            img {
+              filter: none !important;
             }
           }
         }
@@ -115,7 +115,7 @@ $colors: (
 }
 
 .fixBtn {
-  height: 60px;
+  height: 45px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -126,7 +126,7 @@ $colors: (
   border: 1px solid var(--gray-50);
   border-radius: 8px;
   font-weight: 700;
-  min-width: 215px;
+  min-width: 180px;
   @media screen and (max-width: 991.98px) {
     padding: 0 8px;
     height: 40px;
@@ -140,8 +140,9 @@ $colors: (
   &.disabled {
     background-color: #cccccc;
     border: 1px solid #cccccc;
-    color: #949494;
+    color: #ffffff;
     cursor: default;
+    pointer-events: none;
   }
   @media screen and (min-width: 992px) {
     &:not(.disabled) {
@@ -203,4 +204,16 @@ $colors: (
       max-height: auto;
     }
   }
+}
+
+input,
+button {
+  outline: 0;
+  &:focus{
+    outline: 0;
+  }
+}
+
+:focus-visible {
+    outline:0!important;
 }

@@ -17,10 +17,38 @@ function handleScroll(){
 }
 window.addEventListener("scroll", handleScroll);
 
-const authMenuButtonDd = document.querySelector(".menuDropdownWrapper.auth");
-const authMenuButton = authMenuButtonDd.querySelector(".menuDropdownWrapper.auth .dropdownButton");
-function handleClickAuth(){
-    this.classList.toggle("active");
-    this.parentElement.classList.toggle("show");
+// const authMenuButtonDd = document.querySelector(".menuDropdownWrapper.auth");
+// const authMenuButton = authMenuButtonDd.querySelector(".menuDropdownWrapper.auth .dropdownButton");
+// function handleClickAuth(){
+//     this.classList.toggle("active");
+//     this.parentElement.classList.toggle("show");
+// }
+// authMenuButton.addEventListener("click", handleClickAuth);
+
+
+
+if (typeof Fancybox !== "undefined") {
+  Fancybox.bind("[data-fancybox]", {
+    compact: !1,
+    Carousel: {},
+    Thumbs: !1,
+    Toolbar: {
+      display: {
+        left: [],
+        middle: [],
+        right: ["close"],
+      },
+    },
+  });
+  Fancybox.bind(".galleryItem", {
+    compact: !1,
+    Carousel: {},
+    Toolbar: {
+      display: {
+        left: [],
+        middle: [],
+        right: ["close"],
+      },
+    },
+  });
 }
-authMenuButton.addEventListener("click", handleClickAuth);

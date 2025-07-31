@@ -1,5 +1,12 @@
-@import "config/index";
-@import "components/index";
+@use "config/index" as config;
+@use "components/index" as components;
+
+
+// body {
+//   background-color: config.$bg-color;
+//   @include components.button-style;
+// }
+
 
 .main{
     min-height: 100vh;

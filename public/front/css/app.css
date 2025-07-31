@@ -961,7 +961,7 @@ video {
 }
 
 .fixBtn {
-  height: 60px;
+  height: 45px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -972,7 +972,7 @@ video {
   border: 1px solid var(--gray-50);
   border-radius: 8px;
   font-weight: 700;
-  min-width: 215px;
+  min-width: 180px;
 }
 @media screen and (max-width: 991.98px) {
   .fixBtn {
@@ -989,8 +989,9 @@ video {
 .fixBtn.disabled {
   background-color: #cccccc;
   border: 1px solid #cccccc;
-  color: #949494;
+  color: #ffffff;
   cursor: default;
+  pointer-events: none;
 }
 @media screen and (min-width: 992px) {
   .fixBtn:not(.disabled):hover {
@@ -1049,6 +1050,19 @@ video {
      object-fit: cover;
   max-width: auto;
   max-height: auto;
+}
+
+input,
+button {
+  outline: 0;
+}
+input:focus,
+button:focus {
+  outline: 0;
+}
+
+:focus-visible {
+  outline: 0 !important;
 }
 
 .preloader {
@@ -1116,17 +1130,33 @@ video {
   color: var(--secondary);
   font-weight: 600;
 }
-.carValueWrapper table tr th,
-.carValueWrapper table tr td {
+.carValueWrapper .summaryTableWrapper {
+  background: var(--white);
+  width: auto;
+  border-radius: 8px;
+  padding: 30px;
+  margin-top: 10px;
+  min-width: 400px;
+}
+.carValueWrapper .summaryTableWrapper table {
+  width: 100%;
+}
+.carValueWrapper .summaryTableWrapper table tr th,
+.carValueWrapper .summaryTableWrapper table tr td {
   border: 1px solid var(--gray-150);
   padding: 5px 20px;
   font-size: 14px;
 }
-.carValueWrapper table tr th {
-  background-color: var(--gray-100);
-  color: var(--secondary);
+.carValueWrapper .summaryTableWrapper table tr th {
+  background: var(--secondary);
+  color: var(--white);
   text-align: left;
   font-weight: 600;
+  height: 40px;
+}
+.carValueWrapper .summaryTableWrapper table tr td:first-child {
+  color: var(--secondary);
+  font-weight: 500;
 }
 .carValueWrapper .text {
   font-weight: 500;
@@ -1183,6 +1213,17 @@ video {
   font-weight: 600;
   gap: 30px;
   height: 50px;
+  background-color: var(--white);
+  color: var(--secondary);
+}
+@media screen and (min-width: 992px) {
+  .carValueWrapper > .leftColumn .header .menuDropdownWrapper .fixBtn:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+  }
+  .carValueWrapper > .leftColumn .header .menuDropdownWrapper .fixBtn:hover img {
+    filter: invert(70%) brightness(4.5);
+  }
 }
 .carValueWrapper > .leftColumn .carValueFormWrapper {
   height: calc(100% - 100px);
@@ -1201,6 +1242,23 @@ video {
     padding-right: 129.6px;
   }
 }
+.carValueWrapper > .rightColumn .rightContentWrapper {
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 20px 30px 50px;
+}
+.carValueWrapper > .rightColumn .rightContentWrapper .imageWrapper {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.carValueWrapper > .rightColumn .rightContentWrapper .imageWrapper img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  min-width: 100%;
+}
 .carValueWrapper .form {
   display: flex;
   flex-direction: column;
@@ -1210,24 +1268,74 @@ video {
   font-weight: 500;
   font-size: 15px;
   color: var(--black);
+  padding-bottom: 16px;
+  padding-left: 10px;
 }
-.carValueWrapper .form input {
-  height: 55px;
+.carValueWrapper .form .validateColumn {
+  position: relative;
+}
+.carValueWrapper .form .validateColumn.valid:after {
+  content: "";
+  background-image: url("../../images/statics/icons/success.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  position: absolute;
+  top: 17px;
+  right: 14px;
+}
+.carValueWrapper .form .validateColumn.invalid:after {
+  content: "";
+  background-image: url("../../images/statics/icons/error.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 16px;
+  right: 14px;
+}
+.carValueWrapper .form .inputColumn {
+  position: relative;
+}
+.carValueWrapper .form .inputColumn input {
+  height: 50px;
   background-color: var(--white);
+  border: 1px solid var(--white);
   border-radius: 8px;
   padding: 0 20px;
+  padding-right: 40px;
+  font-size: 14px;
 }
-.carValueWrapper .form input::-moz-placeholder {
+.carValueWrapper .form .inputColumn input::-moz-placeholder {
   color: var(--gray-250);
 }
-.carValueWrapper .form input::placeholder {
+.carValueWrapper .form .inputColumn input::placeholder {
   color: var(--gray-250);
 }
-.carValueWrapper .form input::-moz-placeholder {
+.carValueWrapper .form .inputColumn input::-moz-placeholder {
   color: var(--gray-250);
 }
-.carValueWrapper .form input::-webkit-input-placeholder {
+.carValueWrapper .form .inputColumn input::-webkit-input-placeholder {
   color: var(--gray-250);
+}
+.carValueWrapper .form .inputColumn input.valid {
+  border-color: var(--success);
+}
+.carValueWrapper .form .inputColumn input.invalid {
+  border-color: var(--error);
+}
+.carValueWrapper .form .inputColumn input.disabled {
+  border-color: var(--gray-150);
+  background-color: var(--gray-150);
+  color: var(--white);
+}
+.carValueWrapper .form .plateColumn {
+  margin-bottom: 20px;
 }
 .carValueWrapper .form .textareColumn {
   width: 100%;
@@ -1244,24 +1352,54 @@ video {
   margin-top: 30px;
   text-transform: uppercase;
 }
-.carValueWrapper .form .selectColumn .select2 {
-  height: 55px;
-  background-color: var(--white);
-  border-radius: 8px;
-  padding: 0 20px;
+.carValueWrapper .form .selectColumn {
+  position: relative;
 }
-.carValueWrapper .form .selectColumn .select2 .selection,
-.carValueWrapper .form .selectColumn .select2 .select2-selection {
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-  width: 100%;
-  border: none;
+.carValueWrapper .form .selectColumn.valid .ts-control {
+  border-color: var(--success);
+}
+.carValueWrapper .form .selectColumn.valid .ts-control:before {
+  content: "";
+  background-image: url("../../images/statics/icons/success.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 30px;
+  top: 12px;
+}
+.carValueWrapper .form .selectColumn.invalid .ts-control {
+  border-color: var(--error);
+}
+.carValueWrapper .form .selectColumn.invalid .ts-control:before {
+  content: "";
+  background-image: url("../../images/statics/icons/error.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 30px;
+  top: 12px;
+}
+.carValueWrapper .form.uyelikEvetForm {
+  max-width: 315px;
+}
+.carValueWrapper .form.uyelikEvetForm .textLink {
+  font-size: 12px;
+  margin-left: auto;
+  color: var(--secondary);
+}
+.carValueWrapper .form.uyelikEvetForm .textLink:after {
+  display: none;
 }
 .carValueWrapper .radioContainer {
   background-color: var(--white);
   border-radius: 4px;
-  height: 58px;
+  height: 55px;
   display: flex;
   align-items: center;
   padding: 0 20px;
@@ -1285,7 +1423,7 @@ video {
 .carValueWrapper .radioContainer .checkcircle {
   width: 26px;
   height: 26px;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--gray-150);
   background-color: var(--white);
   border-radius: 100%;
   position: relative;
@@ -1314,7 +1452,6 @@ video {
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
-  padding-top: 16px;
 }
 .carValueWrapper .form-groups input:not([type=radio]),
 .carValueWrapper .form-groups .selectColumn {
@@ -1323,6 +1460,9 @@ video {
 }
 .carValueWrapper .form-groups select {
   width: 100%;
+}
+.carValueWrapper .form-groups .formLabel {
+  padding-bottom: 5px;
 }
 .carValueWrapper .form-groups .form-group {
   display: flex;
@@ -1345,11 +1485,11 @@ video {
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100% - 300px);
-  height: 60px;
+  width: 100%;
+  height: 80px;
   background-color: var(--white);
   z-index: 999;
-  padding-right: 40px;
+  padding-right: 340px;
   box-shadow: -20px 4px 14px rgba(0, 0, 0, 0.5);
 }
 @media screen and (max-width: 1920px) {
@@ -1360,6 +1500,23 @@ video {
 @media screen and (max-width: 1921px) {
   .carValueWrapper.fixed > .leftColumn .header {
     padding-left: 129.6px;
+  }
+}
+.carValueWrapper.fixed > .leftColumn .header .fixBtn {
+  background-color: var(--secondary);
+  color: var(--white);
+  border: 1px solid var(--secondary);
+}
+.carValueWrapper.fixed > .leftColumn .header .fixBtn img {
+  filter: invert(70%) brightness(4.5);
+}
+@media screen and (min-width: 992px) {
+  .carValueWrapper.fixed > .leftColumn .header .fixBtn:hover {
+    background-color: var(--white);
+    color: var(--secondary);
+  }
+  .carValueWrapper.fixed > .leftColumn .header .fixBtn:hover img {
+    filter: none;
   }
 }
 .carValueWrapper.fixed > .leftColumn .header .logo img {
@@ -1385,15 +1542,17 @@ video {
     right: 0;
   }
 }
+.carValueWrapper.fixed > .rightColumn .rightContentWrapper {
+  padding-top: 120px;
+}
 .carValueWrapper.fixed .formStepMenu {
   position: fixed;
-  top: 0;
   left: 0;
   height: 100%;
   width: 215px;
   background-color: var(--gray-100);
   left: 129.6px;
-  top: 60px;
+  top: 120px;
 }
 
 .formStepMenu {
@@ -1518,6 +1677,7 @@ video {
 }
 .carValueFormWrapper .carValueForm .formStepWrapper .formStep.active .formContent {
   height: auto;
+  min-height: 350px;
   visibility: visible;
   opacity: 1;
 }
@@ -1550,29 +1710,43 @@ video {
 .summaryItem {
   margin-bottom: 10px;
   position: relative;
-}
-.summaryItem:after {
-  content: "";
-  background-image: url("../../images/statics/icons/edit.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  width: 30px;
-  position: absolute;
-  right: -50px;
-  top: 0px;
-  height: 32px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s linear;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 .summaryItem .question {
   color: var(--gray-150);
-  font-weight: 700;
+  font-weight: 400;
   transition: all 0.3s linear;
 }
 .summaryItem .answer {
   color: var(--gray-150);
+  transition: all 0.3s linear;
+  font-weight: 500;
+  position: relative;
+}
+.summaryItem .answer p {
+  color: var(--gray-150);
+  transition: all 0.3s linear;
+  font-weight: 500;
+}
+.summaryItem .answer p b {
+  font-weight: 500;
+}
+.summaryItem .answer:after {
+  content: "";
+  background-image: url("../../images/statics/icons/edit-secondary.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 18px;
+  position: absolute;
+  right: -30px;
+  top: 0px;
+  height: 24px;
+  opacity: 0;
+  visibility: hidden;
   transition: all 0.3s linear;
 }
 .summaryItem .editBtn {
@@ -1587,49 +1761,87 @@ video {
   .summaryItem:hover {
     cursor: pointer;
   }
-  .summaryItem:hover:after {
-    opacity: 0.5;
-    visibility: visible;
-  }
   .summaryItem:hover .question {
     color: var(--gray-250);
   }
   .summaryItem:hover .answer {
     color: var(--gray-250);
   }
+  .summaryItem:hover .answer p {
+    color: var(--gray-250);
+  }
+  .summaryItem:hover .answer:after {
+    opacity: 0.5;
+    visibility: visible;
+  }
 }
 
-.selectColumn .select2-container--default .select2-selection--single .select2-selection__arrow {
-  height: 38px;
+.ts-control {
+  background-color: var(--white) !important;
+  border: none;
+  height: 50px;
+  border-radius: 8px;
+  padding: 0 !important;
+  padding-left: 20px !important;
+  border: 1px solid var(--white);
+  position: relative;
+}
+.ts-control:after {
+  border-color: grey transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: " ";
+  display: block;
+  height: 0;
+  margin-top: -3px;
   position: absolute;
-  top: 9px;
-  right: 10px;
-  width: 31px;
+  top: 50%;
+  width: 0;
 }
-.selectColumn .select2-container--default .select2-selection--single .select2-selection__arrow b {
-  border-width: 10px 8px 0 8px;
+.ts-control:not(.rtl) {
+  padding-right: 50px !important;
+}
+.ts-control:not(.rtl):after {
+  right: 15px;
+}
+.ts-control input {
+  min-width: initial !important;
+  width: auto !important;
+  height: 50px;
+  padding-right: 20px;
+  color: var(--black);
+  font-weight: 500;
+}
+.ts-control .item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: var(--black);
+  font-weight: 500;
 }
 
-.select2-container--open .select2-dropdown--below,
-.select2-container--open .select2-dropdown--above {
-  margin-top: 6px;
+.ts-wrapper.dropdown-active .ts-control:after {
+  border-color: transparent transparent grey;
+  border-width: 0 5px 5px;
+  margin-top: -4px;
+}
+
+.ts-dropdown {
+  padding-bottom: 10px;
+  top: calc(100% + 10px);
   border-radius: 8px;
   border: 1px solid var(--gray-500);
+  background-color: var(--white);
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.5);
-  padding-bottom: 10px;
-  max-height: 300px;
+  overflow: hidden;
 }
-.select2-container--open .select2-dropdown--above {
-  margin-top: -20px;
-  border: 1px solid var(--gray-500);
-  border-radius: 10px !important;
-  padding-bottom: 10px;
+.ts-dropdown .create {
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
-.select2-container--open .select2-search--dropdown {
-  display: block;
-  padding: 10px 20px 20px;
-}
-.select2-container--open .select2-results__option {
+.ts-dropdown .ts-dropdown-content .option {
   min-height: 45px;
   display: flex;
   align-items: center;
@@ -1637,28 +1849,36 @@ video {
   font-size: 14px;
   padding: 0 20px;
   font-weight: 500;
+  position: relative;
+}
+.ts-dropdown .ts-dropdown-content .option.selected {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+.ts-dropdown .ts-dropdown-content .option.selected:after {
+  content: "";
+  background-image: url("../../images/statics/icons/success.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  background-color: var(--white);
+  border-radius: 100%;
 }
 
-.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar-thumb {
-  background-color: var(--secondary);
-}
-.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar-thumb::-webkit-scrollbar-track {
-  background-color: var(--secondary);
-}
-.select2-container--default .select2-results__option--selected {
-  background-color: var(--gray-50);
-}
-.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-  background-color: var(--secondary);
-}
-
-.select2-search--dropdown .select2-search__field {
-  border-radius: 1px solid var(--gray-150);
-  border-radius: 6px;
+.error-message {
+  color: var(--error);
+  font-weight: 600;
   font-size: 14px;
-  height: 40px;
-  color: var(--gray-250);
-  padding: 0 10px;
+  position: absolute;
+  background-color: var(--white);
+  padding: 1px 8px;
+  border-radius: 4px;
+  top: calc(100% - 10px);
+  z-index: 2;
+  left: 6px;
 }
 
 .containerCheck {
@@ -1740,7 +1960,7 @@ video {
   margin-bottom: 50px;
 }
 .tramerColumn .checkList {
-  gap: 40px;
+  gap: 14px;
   display: flex;
   align-items: center;
 }
@@ -1750,7 +1970,19 @@ video {
   min-height: initial;
   gap: 15px;
   padding-left: 0;
-  height: 15px;
+  background-color: var(--white);
+  border-radius: 4px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 216px;
+  width: 216px;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--black);
+  gap: 10px;
+  cursor: pointer;
 }
 .tramerColumn .containerCheck .checkmark {
   width: 20px;
@@ -1783,14 +2015,39 @@ video {
   font-size: 15px;
   font-weight: 600;
 }
-.tramerColumn .tramerCss {
+.tramerColumn .tramerCount {
   font-size: 14px;
-  background-color: #fff;
-  border: 2px solid #e0e5ea;
   padding: 8px;
   margin: 0;
   border-radius: 2px;
-  margin-left: 30px;
+  margin-left: 10px;
+  height: 50px;
+  border: 1px solid var(--white);
+  border-radius: 4px;
+}
+.tramerColumn .tramerCount.disabled {
+  border-color: var(--gray-500);
+  background: var(--gray-500);
+  color: var(--white);
+  opacity: 0.5;
+}
+.tramerColumn .tramerCount.disabled::-moz-placeholder {
+  color: var(--white);
+}
+.tramerColumn .tramerCount.disabled::placeholder {
+  color: var(--white);
+}
+.tramerColumn .tramerCount.disabled::-moz-placeholder {
+  color: var(--white);
+}
+.tramerColumn .tramerCount.disabled::-webkit-input-placeholder {
+  color: var(--white);
+}
+.tramerColumn .tramerCount ~ .error-message {
+  left: 15px;
+}
+.tramerColumn .input-container {
+  position: relative;
 }
 
 .ekspertizWrapper {
@@ -1800,6 +2057,7 @@ video {
   background-color: var(--white);
   padding: 40px 60px;
   margin-top: 20px;
+  border-radius: 8px;
 }
 @media screen and (max-width: 991.98px) {
   .ekspertizWrapper {
@@ -1815,7 +2073,7 @@ video {
   }
 }
 .ekspertizWrapper .headTitle {
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
@@ -1823,7 +2081,7 @@ video {
   margin-bottom: 20px;
 }
 .ekspertizWrapper .carWrapper {
-  width: 400px;
+  width: 360px;
   position: relative;
 }
 @media screen and (max-width: 991.98px) {
@@ -1856,19 +2114,25 @@ video {
   display: flex;
   align-items: center;
 }
+.ekspertizWrapper .containerCheck {
+  padding-left: 0;
+  width: 25px;
+  height: 25px;
+}
 .ekspertizWrapper .containerCheck .checkmark {
   top: 0;
 }
 .ekspertizWrapper .containerCheck .checkmark:after {
-  left: 5px;
-  top: 2px;
-  width: 4px;
-  height: 8px;
+  left: 6px;
+  top: 4px;
+  width: 5px;
+  height: 9px;
+  border-color: var(--gray-300);
 }
 .ekspertizWrapper .carPartList {
   border: 2px solid #f0f0f0;
   padding: 0;
-  width: 420px;
+  width: 405px;
 }
 @media screen and (max-width: 991.98px) {
   .ekspertizWrapper .carPartList {
@@ -1899,6 +2163,9 @@ video {
 }
 .ekspertizWrapper .carPartList .carPartItem:not(:first-child) {
   border-top: 1px solid #ebebec;
+}
+.ekspertizWrapper .carPartList .carPartItem .title {
+  font-weight: 500;
 }
 .ekspertizWrapper .carPartList .carPartItem .checkList {
   display: flex;
@@ -2118,7 +2385,6 @@ dialog .dialogFooter .statusButton {
   gap: 10px;
   font-size: 14px;
   font-weight: 600;
-  margin-top: 20px;
   transition: all 0.3s linear;
 }
 .fileUploadColumn .custom-file-upload:hover {
