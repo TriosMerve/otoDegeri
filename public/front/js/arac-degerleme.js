@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedUyelik = null;
   const stepHistory = [];
 
+  //hosgeldınız ekranındakı devam et butonu ayrı olarak calıstırılmıstır burada ana formstepler degıl step gecıslerı saglandıgından farklı class ıle ıslem yapıldı
   uyelikInputs.forEach((input) => {
     input.addEventListener("change", () => {
       document.querySelector(".goStep").removeAttribute("disabled");
@@ -30,15 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.getElementById("devamEtBtn").addEventListener("click", () => {
+  //Devam et butonu -- modern javascriptde getElementbyId yerıne direk Id kullanılıyor o yzuden herhangı bıryerde degısken olarak tanımlanmadı.
+  devamEtBtn.addEventListener("click", () => {
     const selected = document.querySelector(
       "input[name='uyelikSecimi']:checked"
     );
     if (!selected) {
+      //buraya sweetalert eklenebılır ya da dıalog
       alert("Lütfen bir seçim yapınız.");
       return;
     }
 
+    //hosgeldınız ekranında logın veya logınsız gırıs ıcın ekran gostermeler buradan yapılıyor
     selectedUyelik = selected.value;
     stepHistory.push(stepWelcome);
     stepWelcome.style.display = "none";
@@ -109,7 +113,32 @@ document.addEventListener("DOMContentLoaded", () => {
       if (i < stepIndex) nav.classList.remove("disabled");
     });
 
+    setTimeout(() => {
+      //form gecıslerınde bır sonrakı formu scroll ederek yukarıdan baslatır
+      const offset = 140; // Eğer sabit bir header varsa bu kadar piksel aşağıdan başlat
+      const formTop =
+        steps[stepIndex].getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top: formTop,
+        behavior: "smooth",
+      });
+    }, 100);
+    
     currentStep = stepIndex;
+
+    const activeNav = navItems[stepIndex];
+    if (activeNav) {
+      // parent scroll container (örneğin .formStepMenu)
+      const container = activeNav.parentElement;
+
+      // scrollIntoView kullanabiliriz, block: 'nearest' ile aşırı kaymayı önler
+      activeNav.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start",
+      });
+    }
 
     // Uyelik formlarını kontrol et
     if (stepIndex === 0) {
@@ -124,16 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
       uyelikEvetForm.style.display = "none";
       uyelikHayirForm.style.display = "none";
     }
-    const offset = 140; // Eğer sabit bir header varsa bu kadar piksel aşağıdan başlat
-    const formTop =
-      steps[stepIndex].getBoundingClientRect().top + window.scrollY - offset;
-
-    window.scrollTo({
-      top: formTop,
-      behavior: "smooth",
-    });
   }
 
+  //Summary guncelleme
   function updateSummary() {
     steps.forEach((step, index) => {
       const summaryContainer = step.querySelector(".stepSummary");
@@ -150,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const form = step.querySelector(".form, .step.form");
       const labels = form?.querySelectorAll(".formLabel");
 
-      // 🔹 AD & SOYAD özel durumu — uyelikHayirForm içindeyse
+      // uyelikHayirForm içindeyse ad-soyad ozel durum
       if (step.querySelector(".uyelikHayirForm")) {
         const ad = step.querySelector("input[name='ad']")?.value.trim();
         const soyad = step.querySelector("input[name='soyad']")?.value.trim();
@@ -165,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
+      //label form label kontrol
       if (!labels || labels.length === 0) return;
 
       labels.forEach((labelEl) => {
@@ -183,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const hasFileInput = groupInputs.some((input) => input.type === "file");
 
-        // HASAR tablosu özeti
+        // Hasar Step formunda Hasar tablosu özeti
         if (
           step.classList.contains("hasarStep") &&
           labelText.includes("Hasarlı")
@@ -221,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        // 🔸 TRAMER özeti
+        // Hasar Step formunda Tramer ınput kontrol
         if (
           step.classList.contains("hasarStep") &&
           labelText.includes("Tramer")
@@ -251,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        // 🔸 Standart alanlar
+        // Standart secım alanları
         const answers = Array.from(groupInputs)
           .filter(
             (input) =>
@@ -264,16 +287,16 @@ document.addEventListener("DOMContentLoaded", () => {
           .map((input) => input.value.trim())
           .join(" / ");
 
+        // arac gorsellerı kaydedılen ozet kısmı start
         let imagesHtml = "";
         if (hasFileInput && selectedCarImages.length > 0) {
-          imagesHtml =
-            '<div class="summaryCarImages" style="margin-top:10px;">';
+          imagesHtml = '<div class="summaryCarImages thumbnails">';
           selectedCarImages.forEach((imgData) => {
             imagesHtml += `
-          <a href="${imgData.src}" data-fancybox="gallery" data-caption="${imgData.name}" style="display:inline-block; margin:5px;">
-            <img src="${imgData.src}" alt="${imgData.name}" style="width:60px; height:60px; object-fit:cover; border-radius:4px; border:1px solid #ccc;">
-          </a>
-        `;
+                  <a href="${imgData.src}" data-fancybox="gallery" data-caption="${imgData.name}" class="thumbItem">
+                    <img src="${imgData.src}" alt="${imgData.name}">
+                  </a>
+                `;
           });
           imagesHtml += "</div>";
         }
@@ -290,6 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `;
         }
+        // arac gorsellerı kaydedılen ozet kısmı end
       });
     });
     updateNextButtonText();
@@ -379,7 +403,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const tramerCheckbox = document.querySelector("input[name='tramer']");
-  const tramerCount = document.getElementById("tramerCount");
   const hasarStepNextButton = document.querySelector(
     ".formStep.hasarStep .nextButton"
   );
@@ -427,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Tramer inputuna sadece rakam ve binlik format
+  // Tramer inputuna sadece rakam ve binlik format kontrolu
   tramerCount.addEventListener("input", (e) => {
     let value = tramerCount.value.replace(/[^0-9]/g, "");
     if (value === "") {
@@ -445,6 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  //kilometre ınputunda rakam kontrolu / validate
   const kilometreInput = document.querySelector("input[name='kilometre']");
   if (kilometreInput) {
     kilometreInput.addEventListener("input", () => {
@@ -461,20 +485,21 @@ document.addEventListener("DOMContentLoaded", () => {
       kilometreInput.value = numberValue.toLocaleString("tr-TR");
     });
   }
-  // Delegasyon ile edit butonları yakalanıyor
+
+  // edit butonları click işlemlerı
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("editBtn")) {
       const parent = e.target.closest(".summaryItem");
       const stepIndex = parseInt(parent.getAttribute("data-goto"), 10);
       if (!isNaN(stepIndex)) {
-        showStep(stepIndex, true); // geçişi yap
+        showStep(stepIndex, true);
         isEditing = true;
         updateNextButtonText();
 
-        // Tüm form adımlarını al
+        // Tüm form adımlarını alır
         const steps = document.querySelectorAll(".formStep");
 
-        // İlgili adımdaki formStep hariç diğerlerine .disabled ekle
+        // İlgili adımdaki formStep hariç diğerlerine .disabled classını ekler
         steps.forEach((step, index) => {
           if (index !== stepIndex) {
             step.classList.add("disabled");
@@ -489,65 +514,45 @@ document.addEventListener("DOMContentLoaded", () => {
   showStep(0);
   updateSummary();
 
+  //plaka input format
   function formatTurkishPlate(value) {
     let v = value.toUpperCase().replace(/[^0-9A-Z]/g, "");
-
     const cityCode = v.slice(0, 2).replace(/\D/g, "");
     let rest = v.slice(2);
 
     const lettersMatch = rest.match(/^[A-Z]{1,3}/);
     const letters = lettersMatch ? lettersMatch[0] : "";
-
     rest = rest.slice(letters.length);
 
     const numbers = rest.replace(/\D/g, "").slice(0, 4);
-
     let formatted = cityCode;
 
     if (cityCode.length === 2) formatted += " ";
-
     if (letters.length > 0) {
       formatted += letters + " ";
       formatted += numbers;
     } else {
-      // Eğer harf yoksa sayıları ekleme veya başka bir davranış
-      // Örneğin sadece şehir kodunu döndür
-      // ya da boş string
-      // Bu durumda geçersiz bir format olur ve validatePlate false döner.
       return cityCode;
     }
-
     return formatted.trim();
   }
 
-  console.log(formatTurkishPlate("34a123456789")); // "34 A 1234"
-  console.log(validatePlate(formatTurkishPlate("34a123456789"))); // true
-
-  // Türk plakası validasyon fonksiyonu
+  // Türkiye plakası validasyon fonksiyonu
   function validatePlate(value) {
     const plate = value.trim().toUpperCase();
-    console.log("Checking:", plate);
-
     // 34 A 1234
     const pattern1 = /^[0-9]{2} [A-Z]{1,3} [0-9]{1,4}$/;
-
     // 06 AB 123
     const pattern2 = /^[0-9]{2} [A-Z]{1,2} [0-9]{1,3}$/;
-
     // 01 ABC 12
     const pattern3 = /^[0-9]{2} [A-Z]{1,3} [0-9]{1,2}$/;
-
     const isValid =
       pattern1.test(plate) || pattern2.test(plate) || pattern3.test(plate);
-
-    console.log("Pattern1:", pattern1.test(plate));
-    console.log("Pattern2:", pattern2.test(plate));
-    console.log("Pattern3:", pattern3.test(plate));
-    console.log("Final isValid:", isValid);
 
     return isValid;
   }
 
+  //genel validate fonksıyonu
   function validateStepForm(stepElement) {
     const inputs = stepElement.querySelectorAll("input, select, textarea");
     const nextButton = stepElement.querySelector(".nextButton");
@@ -671,6 +676,34 @@ document.addEventListener("DOMContentLoaded", () => {
         return; // bu input için diğer validasyonlara geçme
       }
 
+      // Telefon numarası özel kontrol
+      if (input.name === "phoneInput") {
+        const phoneRegex = /^[1-9][0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}$/;
+        const isValidPhone = phoneRegex.test(value);
+
+        if (!isValidPhone) {
+          input.parentElement.classList.add("invalid");
+          input.classList.add("invalid");
+          input.parentElement.classList.remove("valid");
+          input.classList.remove("valid");
+          allValid = false;
+
+          const oldError = parent.querySelector(".error-message");
+          if (!oldError) {
+            const error = document.createElement("div");
+            error.className = "error-message";
+            error.textContent = "Telefon nuamranızı başında 0 olmadan yazınız.";
+            parent.appendChild(error);
+          }
+        } else {
+          input.parentElement.classList.remove("invalid");
+          input.parentElement.classList.add("valid");
+          input.classList.remove("invalid");
+          input.classList.add("valid");
+        }
+        return; // diğer kontrolleri atla
+      }
+
       const hasValue =
         input.type === "checkbox" || input.type === "radio"
           ? input.checked
@@ -695,6 +728,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    //valid işlemlerınde devam et butonunu disabled eder veya ekler
     if (allValid) {
       nextButton.classList.add("active");
       nextButton.classList.remove("disabled");
@@ -708,8 +742,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  //plaka numarası input alanı kontrol
   const numberPlateInput = document.querySelector("#numberPlate");
-
   numberPlateInput.addEventListener("input", () => {
     const rawValue = numberPlateInput.value;
     const formatted = formatTurkishPlate(rawValue);
@@ -732,6 +766,8 @@ document.addEventListener("DOMContentLoaded", () => {
       validateStepForm(formStep);
     });
   });
+
+  //custom selectler ıcın validate kontrolu
   $(".customSelect").on("change", function () {
     const formStep = this.closest(".formStep .form");
     if (formStep) {
@@ -739,8 +775,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  //arac gorsellerı ıcın baslangıc
   let selectedCarImages = [];
-  // const fileNameSpan = document.querySelector(".file-name");
+  const fileNameSpan = document.querySelector(".file-name");
   const thumbnailsDiv = document.querySelector(".thumbnails");
 
   carImageInput.addEventListener("change", (event) => {
@@ -771,8 +808,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Thumbnail
         const wrapperDiv = document.createElement("div");
-        wrapperDiv.style.display = "inline-block";
-        wrapperDiv.style.margin = "5px";
+        wrapperDiv.classList.add("thumbItem");
 
         const link = document.createElement("a");
         link.href = base64;
@@ -781,11 +817,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const img = document.createElement("img");
         img.src = base64;
-        img.style.width = "120px";
-        img.style.height = "120px";
-        img.style.objectFit = "cover";
-        img.style.borderRadius = "4px";
-        img.style.border = "1px solid #ccc";
+
         img.alt = file.name;
 
         link.appendChild(img);
@@ -794,21 +826,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateSummary();
 
+        if (fileNameSpan) {
+          fileNameSpan.remove();
+        }
         // fileNameSpan.textContent = `${selectedCarImages.length} dosya seçildi`;
       };
       reader.readAsDataURL(file);
     });
 
     if (files.length > remainingSlots) {
+      //sweetalert eklenebılır
       alert(
         `En fazla 10 dosya yükleyebilirsiniz. Sadece ilk ${remainingSlots} dosya yüklendi.`
       );
     }
-
+    if (fileNameSpan) {
+      fileNameSpan.remove();
+    }
     // fileNameSpan.textContent = `${selectedCarImages.length} dosya seçildi`;
     carImageInput.value = ""; // input'u sıfırla
   });
+  //arac gorsellerı ıcın bitiş
 
+  const phoneInput = document.getElementById("phoneInput");
+  let lastDigits = "";
+
+  phoneInput.addEventListener("input", function (e) {
+    const input = e.target;
+    const rawValue = input.value;
+    let cursorPos = input.selectionStart;
+
+    // Sadece rakamları al
+    let digits = rawValue.replace(/\D/g, "");
+
+    // Önceki rakamları tut
+    const oldDigits = lastDigits;
+
+    // En fazla 10 rakam al (YXX XXX XX XX toplam 10 rakam)
+    digits = digits.substring(0, 10);
+
+    // Parantez ve baştaki 0 yok artık, ama Y ilk rakam 0 olamaz:
+    if (digits.length > 0 && digits[0] === "0") {
+      // İlk rakam 0 ise onu sil
+      digits = digits.slice(1);
+      if (cursorPos > 0) cursorPos--;
+    }
+
+    // Cursor öncesindeki rakam sayısını say (eski değer üzerinden)
+    let digitCountBeforeCursor = 0;
+    for (let i = 0; i < cursorPos; i++) {
+      if (/\d/.test(rawValue[i])) digitCountBeforeCursor++;
+    }
+
+    // Formatlama: YXX XXX XX XX
+    let formatted = "";
+    if (digits.length > 0) formatted += digits.substring(0, 1); // Y
+    if (digits.length > 1)
+      formatted += digits.substring(1, Math.min(3, digits.length)); // XX
+    if (digits.length > 3)
+      formatted += " " + digits.substring(3, Math.min(6, digits.length)); // XXX
+    if (digits.length > 6)
+      formatted += " " + digits.substring(6, Math.min(8, digits.length)); // XX
+    if (digits.length > 8)
+      formatted += " " + digits.substring(8, Math.min(10, digits.length)); // XX
+
+    // Yeni cursor pozisyonunu rakam sayısına göre bul
+    let newCursorPos = 0;
+    let digitsSeen = 0;
+    while (
+      digitsSeen < digitCountBeforeCursor &&
+      newCursorPos < formatted.length
+    ) {
+      if (/\d/.test(formatted[newCursorPos])) digitsSeen++;
+      newCursorPos++;
+    }
+
+    input.value = formatted;
+
+    // İmleci doğru pozisyona ayarla
+    input.setSelectionRange(newCursorPos, newCursorPos);
+
+    lastDigits = digits;
+  });
+
+  // Blur olduğunda doğrulama yapalım
+  phoneInput.addEventListener("blur", function () {
+    const regex = /^[1-9][0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}$/;
+    if (!regex.test(phoneInput.value)) {
+      alert("Geçerli bir telefon numarası giriniz. İlk rakam 0 olamaz.");
+      phoneInput.focus();
+    }
+  });
+
+  //son step form tamamlandgıında
   const finalStep = steps[steps.length - 1];
   const finalNextBtn = finalStep.querySelector(".nextButton");
 
@@ -820,7 +930,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentForm = finalStep.querySelector(".form");
       if (!currentForm) return;
 
-      validateStepForm(currentForm); // Bu zaten var olan fonksiyon
+      validateStepForm(currentForm);
 
       const isValid = currentForm.querySelectorAll(".invalid").length === 0;
 
@@ -843,8 +953,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         wrapper.parentElement.appendChild(resultDiv);
 
-        // İsteğe bağlı olarak sayfayı mesajın üstüne kaydırabilirsiniz:
-        resultDiv.scrollIntoView({ behavior: "smooth" });
+        //sayfayı mesajın üstüne kaydırır:
         window.scrollTo(0, 0);
       }
     });

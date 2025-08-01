@@ -3,7 +3,7 @@
   position: relative;
   display: inline-block;
   width: 80px;
-  height: 34px;
+  height: 40px;
 
   /* Hide default HTML checkbox */
   input {
@@ -27,8 +27,8 @@
     &:before {
       position: absolute;
       content: "";
-      height: 26px;
-      width: 26px;
+      height: 32px;
+      width: 32px;
       left: 4px;
       bottom: 4px;
       background-color: white;
@@ -43,7 +43,7 @@
       color: var(--gray-300);
       font-weight: 500;
       font-size: 14px;
-      top: 7px;
+      top: 10px;
       transition: all 0.3s linear;
     }
   }
@@ -57,9 +57,9 @@
   }
 
   input:checked + .slider:before {
-    -webkit-transform: translateX(44px);
-    -ms-transform: translateX(44px);
-    transform: translateX(44px);
+    -webkit-transform: translateX(39px);
+    -ms-transform: translateX(39px);
+    transform: translateX(39px);
   }
   input:checked + .slider:after {
     content: "Var";

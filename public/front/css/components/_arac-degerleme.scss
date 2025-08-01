@@ -707,13 +707,13 @@
     color: var(--secondary);
   }
   .question {
-    color: var(--gray-150);
+    color: var(--gray-200);
     font-weight: 400;
     font-size: 15px;
     transition: all 0.3s linear;
   }
   .answer {
-    color: var(--gray-150);
+    color: var(--gray-200);
     transition: all 0.3s linear;
     font-weight: 500;
     position: relative;
@@ -760,7 +760,78 @@
     }
   }
 }
+.summaryCarImages {
+  margin-top: 10px;
+}
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px 20px;
+  margin-top: 30px;
+  img {
+    border: 1px solid #ccc;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    transition: all 0.3s linear;
+  }
+  .thumbItem {
+    width: calc(20% - 16px);
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      &:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s linear;
+      }
+      &:after {
+        content: "";
+        background-image: url("../../images/statics/icons/search-plus.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transform: translateY(-50%);
+        transition: all 0.3s linear;
+      }
 
+      @media screen and (min-width: 992px) {
+        &:hover {
+          &:after {
+            width: 40px;
+            height: 40px;
+          }
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
 .ts-control {
   background-color: var(--white) !important;
   border: none;
@@ -896,83 +967,3 @@
     display: block;
   }
 }
-
-// .selectColumn {
-//   .select2-container--default {
-//     .select2-selection--single {
-//       .select2-selection__arrow {
-//         height: 38px;
-//         position: absolute;
-//         top: 9px;
-//         right: 10px;
-//         width: 31px;
-//         b {
-//           border-width: 10px 8px 0 8px;
-//         }
-//       }
-//     }
-//   }
-// }
-// .select2-container--open {
-//   .select2-dropdown--below,
-//   .select2-dropdown--above {
-//     margin-top: 6px;
-//     border-radius: 8px;
-//     border: 1px solid var(--gray-500);
-//     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.5);
-//     padding-bottom: 10px;
-//     max-height: 300px;
-//   }
-//   .select2-dropdown--above {
-//     margin-top: -20px;
-//     border: 1px solid var(--gray-500);
-//     border-radius: 10px !important;
-//     padding-bottom: 10px;
-//   }
-
-//   .select2-search--dropdown {
-//     display: block;
-//     padding: 10px 20px 20px;
-//   }
-//   .select2-results__option {
-//     min-height: 45px;
-//     display: flex;
-//     align-items: center;
-//     color: var(--gray-250);
-//     font-size: 14px;
-//     padding: 0 20px;
-//     font-weight: 500;
-//   }
-// }
-
-// .select2-container--default {
-//   .select2-results {
-//     & > .select2-results__options {
-//       &::-webkit-scrollbar-thumb {
-//         background-color: var(--secondary);
-//         &::-webkit-scrollbar-track {
-//           background-color: var(--secondary);
-//         }
-//       }
-//     }
-//   }
-//   .select2-results__option--selected {
-//     background-color: var(--gray-50);
-//   }
-//   .select2-results__option--highlighted {
-//     &.select2-results__option--selectable {
-//       background-color: var(--secondary);
-//     }
-//   }
-// }
-
-// .select2-search--dropdown {
-//   .select2-search__field {
-//     border-radius: 1px solid var(--gray-150);
-//     border-radius: 6px;
-//     font-size: 14px;
-//     height: 40px;
-//     color: var(--gray-250);
-//     padding: 0 10px;
-//   }
-// }
