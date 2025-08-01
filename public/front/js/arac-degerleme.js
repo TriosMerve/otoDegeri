@@ -5,6 +5,9 @@ window.addEventListener("load", () => {
   }
   window.scrollTo(0, 0);
 });
+document.querySelectorAll('.uyelikEvetForm input').forEach(input => {
+  input.setAttribute('autocomplete', 'off');
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   let currentStep = 0;
@@ -120,11 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
         steps[stepIndex].getBoundingClientRect().top + window.scrollY - offset;
 
       window.scrollTo({
-        top: formTop,
+        top: formTop - 80,
         behavior: "smooth",
       });
     }, 100);
-    
+
     currentStep = stepIndex;
 
     const activeNav = navItems[stepIndex];

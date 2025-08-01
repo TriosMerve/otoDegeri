@@ -1304,7 +1304,7 @@ button:focus {
   min-width: 170px;
   font-size: 15px;
   font-weight: 600;
-  gap: 30px;
+  gap: 20px;
   height: 50px;
 }
 .carValueWrapper > .leftColumn .header .menuDropdownWrapper .fixBtn img {
@@ -2683,7 +2683,7 @@ dialog .dialogFooter .statusButton {
   align-items: center;
 }
 .menuDropdownWrapper .dropdownButton img {
-  width: 14px;
+  width: 30px;
 }
 .menuDropdownWrapper .dropdownButton .menuIcon {
   position: relative;
