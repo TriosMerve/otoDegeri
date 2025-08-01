@@ -12,6 +12,7 @@
   --black: #000000;
   --white: #ffffff;
 
+  --gray-25: #f8f8f8;
   --gray-50: #f9f9f9;
   --gray-75: #ededed;
   --gray-100: #ededed;
@@ -45,6 +46,7 @@ $colors: (
   "secondary": var(--secondary),
   "black": var(--black),
   "white": var(--whit),
+  "gray-25": var(--gray-25),
   "gray-50": var(--gray-50),
   "gray-75": var(--gray-75),
   "gray-100": var(--gray-100),
@@ -93,6 +95,19 @@ $colors: (
         }
       }
     }
+    .button-secondary-outline {
+      &:not(.disabled) {
+        @media screen and (min-width: 992px) {
+          &:hover {
+            background-color: var(--secondary) !important;
+            color: var(--white) !important;
+            img {
+              filter: none !important;
+            }
+          }
+        }
+      }
+    }
   }
 }
 @include generate-button-classes($colors);
@@ -107,14 +122,28 @@ $colors: (
 @include generate-bg-classes($colors);
 
 .container {
-  max-width: calc(1216px + 60px);
+  max-width: 1662px;
   margin: 0 auto;
   width: 100%;
   padding-left: 30px;
   padding-right: 30px;
+  &:not(.full-container) {
+    @media screen and (max-width: 1920px) {
+      padding-left: 6.51041666vw;
+      padding-right: 6.51041666vw;
+    }
+    @media screen and (max-width: 991.98px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
   @media screen and (max-width: 480px) {
     padding-left: 16px;
     padding-right: 16px;
+  }
+  @media screen and (min-width: 1921px) {
+    padding-left: 125px;
+    padding-right: 125px;
   }
 }
 
@@ -131,7 +160,65 @@ $colors: (
   border-radius: 8px;
   font-weight: 600;
   font-size: 15px;
-  min-width: 180px;
+  padding: 0 20px;
+  &.big {
+    height: 90px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 19px;
+    gap: 40px;
+    justify-content: space-between;
+    .customIcon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--white);
+      border-radius: 100%;
+      color: var(--secondary);
+      font-size: 26px;
+      transition: all 0.3s linear;
+    }
+    @media screen and (min-width: 992px) {
+      &:hover {
+        .customIcon {
+          background-color: var(--secondary);
+          color: var(--white);
+          transform: translateX(10px);
+        }
+      }
+    }
+  }
+  &.medium {
+    height: 70px;
+    padding-left: 30x;
+    padding-right: 16px;
+    font-size: 19px;
+    justify-content: space-between;
+    gap: 40px;
+    .customIcon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--white);
+      border-radius: 100%;
+      color: var(--secondary);
+      font-size: 26px;
+      transition: all 0.3s linear;
+    }
+    @media screen and (min-width: 992px) {
+      &:hover {
+        .customIcon {
+          background-color: var(--secondary);
+          color: var(--white);
+          transform: translateX(10px);
+        }
+      }
+    }
+  }
   @media screen and (max-width: 991.98px) {
     padding: 0 8px;
     height: 40px;
@@ -223,6 +310,9 @@ button {
   outline: 0 !important;
 }
 
-.w-100{
-  width: 100%!important;
+.w-100 {
+  width: 100% !important;
+}
+b {
+  font-weight: 700;
 }

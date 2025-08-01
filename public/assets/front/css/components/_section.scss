@@ -1,0 +1,32 @@
+.homeSection{
+    padding-top: 150px;
+    height: 720px;
+}
+
+section{
+    &:not(:first-child){
+        padding-block: 75px;
+    }
+    .sectionHead{
+        text-align: center;
+        padding-bottom: 35px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        .sectionTitle{
+            font-size: 50px;
+            line-height: 60px;
+            color: var(--black);
+            font-weight: 600;
+        }
+        .sectionText{
+            font-size: 18px;
+            line-height: 30px;
+            font-weight: 300;
+            color: var(--black);
+        }
+    }
+    .sectionBody{
+        padding-top: 40px;
+    }
+}

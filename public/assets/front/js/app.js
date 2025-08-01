@@ -14,6 +14,11 @@ function handleScroll() {
       ? carWrapper.classList.add("fixed")
       : carWrapper.classList.remove("fixed");
   }
+
+  const header = document.querySelector("header");
+  const headerH = header.offsetHeight;
+  console.log(headerH);
+  lastScrollY > headerH ? header.classList.add("fixed") : header.classList.remove("fixed");
 }
 window.addEventListener("scroll", handleScroll);
 

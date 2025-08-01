@@ -4,8 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OtoDegeri.com</title>
+
+     <!--Tüm platformlar ıcın faviconlar-->
+    <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon'">
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="public/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="public/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="public/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="public/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="public/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="public/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="public/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="public/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="public/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="public/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="public/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
+    <link rel="manifest" href="public/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="public/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--Tüm platformlar ıcın faviconlar bitiş-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="public/assets/plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/assets/plugin/fancyapps/fancybox.css">
+    <link rel="stylesheet" href="public/assets/front/css/app.min.css">
 </head>
 <body>
-    Anasayfa
+    <div class="preloader">
+        <div class="loaderText">Yükleniyor...</div>
+    </div>
+
+    <header class="bg-transparent">
+        <div class="container full-container">
+            <div class="header">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
+                    <div class="container-fluid align-items-end">
+                        <a href="#" class="logo"><img src="public/assets/images/statics/logo.png" alt="OtoDeğeri Logo"> <span>Oto<b>Değeri</b></span></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Hakkımızda</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Nasıl Çalışır?</a>
+                                </li>
+                             
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">SSS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">İletişim</a>
+                                </li>                                
+                            </ul>
+                            <a href="#" class="fixBtn button-secondary-outline">Oto Galeri Üyeliği</a>
+                        </div>
+                        <div class="buttons d-flex align-items-center">
+                            <div class="menuDropdownWrapper"><!--Login oldugunda auth class ı eklenır-->
+                                <a href="#" class="dropdownButton fixBtn button-gray-200-outline"><img src="public/assets/images/statics/icons/login.svg" alt=""><span>Giriş</span></a>
+                                <!-- <a href="#" class="dropdownButton fixBtn button-secondary"><span>Enver Sarıgül</span> <span class="menuIcon"><span class="line"></span></span></a> -->
+                                <div class="dropdown">
+                                    <ul>
+                                        <li><a href="#"><span>Profilim</span></a></li>
+                                        <li><a href="#"><img src="public/assets/images/statics/icons/logout.svg" alt=""><span>Çıkış</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#" class="fixBtn button-secondary"><img src="public/assets/images/statics/icons/oto.png" alt=""><span>Araç Değerle</span></a>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="homeSection bg-gray-25"> 
+            <div class="container h-100">
+                <div class="homeBannerWrapper">
+                    <div class="row">
+                        <div class="col-lg-6 pe-lg-5">
+                            <div class="desc">
+                                <div class="category"><span>ÜCRETSİZ ARAÇ DEĞERLEME PLATFORMU</span><img src="public/assets/images/statics/icons/info-secondary.svg" alt=""></div>
+                                <div class="title">Aracının değerini öğren, en iyi <b>fiyatı</b> al</div>
+                                <div class="text">Yüzlerce profesyonel oto galeri aracına en iyi fiyat teklifi versin. Aracına verilen fiyat tekliflerini değerlendir!  En yüksek fiyat veren oto galeriye aracını değerinde sat.</div>
+                                <a href="#" class="fixBtn button-secondary big"><span>Ücretsiz Teklif Al</span><span class="icon-arrow-long-right customIcon"></span></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 ms-auto">
+                            <div class="imageWrapper">
+                                <img src="public/assets/images/statics/car.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="sectionHead">
+                    <div class="sectionTitle">Değerle, Teklif Al, Sat</div>
+                    <div class="sectionText">Yüzlerce profesyonel oto galeri aracına en iyi fiyat teklifi versin. Aracına </div>
+                </div>
+                <div class="sectionBody">
+                    <a href="#" class="fixBtn button-secondary medium"><span>Başlayalım</span><span class="icon-arrow-long-right customIcon"></span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container bg-gray-25">
+            <div class="footer">
+                <div class="footerTop">
+                    <a href="#" class="logo"><img src="public/assets/images/statics/logo.png" alt="OtoDeğeri Logo"> <span>Oto<b>Değeri</b></span></a>
+                    <div class="buttons d-flex align-items-center">
+                        <a href="#"><img src="public/assets/images/statics/googleplay.png" alt="google play"></a>
+                        <a href="#"><img src="public/assets/images/statics/appstore.png" alt="app store"></a>
+                    </div>
+                    <div class="socialMedia">
+                        <a href=""><span class="icon-instagram"></span></a>
+                        <a href=""><span class="icon-facebook"></span></a>
+                        <a href=""><span class="icon-twitter"></span></a>
+                        <a href=""><span class="icon-youtube"></span></a>
+                        <a href=""><span class="icon-linkedin"></span></a>
+                    </div>
+                </div>
+                <div class="footerCenter">
+                    <ul class="menuList">
+                        <li>
+                            <span class="menuTitle">Öne Çıkanlar</span>
+                            <ul class="subMenuList">
+                                <li><a class="menuItem" href="#">Araç Değerleme</a></li>
+                                <li><a class="menuItem" href="#">Nasıl Çalışır</a></li>
+                                <li><a class="menuItem" href="#">Sıkça Sorulan Sorular</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="menuTitle">Üyelik</span>
+                            <ul class="subMenuList">
+                                <li><a class="menuItem" href="#">Bireysel Üyelik</a></li>
+                                <li><a class="menuItem" href="#">Oto Galeri Üyeliği</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="menuTitle">Kurumsal</span>
+                            <ul class="subMenuList">
+                                <li><a class="menuItem" href="#">OtoDeğeri Hakkında</a></li>
+                                <li><a class="menuItem" href="#">Bize Ulaşın</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="menuTitle">Blog</span>
+                            <ul class="subMenuList">
+                                <li><a class="menuItem" href="#">Elektrikli Araçlar</a></li>
+                                <li><a class="menuItem" href="#">Öneriler</a></li>
+                                <li><a class="menuItem" href="#">Oto Piyasası</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="menuTitle">Yasal Bilgiler</span>
+                            <ul class="subMenuList">
+                                <li><a class="menuItem" href="#">Hüküm ve Koşullar</a></li>
+                                <li><a class="menuItem" href="#">Gizlilik Politikası</a></li>
+                                <li><a class="menuItem" href="#">KVKK Aydınlatma Metni</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footerBottom">
+                    <div class="copyRight">
+                        Tüm hakları saklıdır 2025 © OtoDeğeri.com
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script src="public/assets/plugin/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="public/assets/front/js/app.js" defer></script>
+
 </body>
 </html>

@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "customFont";
+  src: url("../../fonts/customFont/customFont.eot?adtuu1");
+  src: url("../../fonts/customFont/customFont.eot?adtuu1#iefix") format("embedded-opentype"),
+    url("../../fonts/customFont/customFont.ttf?adtuu1") format("truetype"),
+    url("../../fonts/customFont/customFont.woff?adtuu1") format("woff"),
+    url("../../fonts/customFont/customFont.svg?adtuu1#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "customFont" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-long-right:before {
+  content: "\e90e";
+}
+.icon-arrow-down:before {
+  content: "\e900";
+}
+.icon-cross:before {
+  content: "\e901";
+}
+.icon-cross-fill:before {
+  content: "\e902";
+}
+.icon-dashboard:before {
+  content: "\e903";
+}
+.icon-facebook:before {
+  content: "\e904";
+}
+.icon-instagram:before {
+  content: "\e905";
+}
+.icon-left-arrow:before {
+  content: "\e906";
+}
+.icon-linkedin:before {
+  content: "\e907";
+}
+.icon-minus:before {
+  content: "\e908";
+}
+.icon-plus:before {
+  content: "\e909";
+}
+.icon-right-arrow:before {
+  content: "\e90a";
+}
+.icon-twitter:before {
+  content: "\e90b";
+}
+.icon-upload:before {
+  content: "\e90c";
+}
+.icon-youtube:before {
+  content: "\e90d";
+}

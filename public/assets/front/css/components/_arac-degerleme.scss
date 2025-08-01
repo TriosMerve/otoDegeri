@@ -93,6 +93,9 @@
         // padding-right: calc(336px + 129.6px + 40px);
         width: calc(100% - (129.6px + 336px));
       }
+      .fixBtn {
+        min-width: 180px;
+      }
       .menuDropdownWrapper {
         margin-left: auto;
         .fixBtn {
