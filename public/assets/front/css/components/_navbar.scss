@@ -1,18 +1,22 @@
-.navbar-collapse{
-
+.navbar-collapse {
 }
 
-.navbar-nav{
-    .nav-item{
-        .nav-link{
-            font-weight: 500;
-            font-size: 15px;
-            color: #4e4e4e;
-            transition: all .3s linear;
-            padding: 0 30px;
-            &.active{
-                color: var(--secondary);
-            }
+.navbar-nav {
+  .nav-item {
+    .nav-link {
+      font-weight: 500;
+      font-size: 15px;
+      color: #4e4e4e;
+      transition: all 0.3s linear;
+      padding: 0 30px;
+      &.active {
+        color: var(--secondary);
+      }
+      @media screen and (min-width: 992px) {
+        &:hover {
+          color: var(--secondary);
         }
+      }
     }
+  }
 }

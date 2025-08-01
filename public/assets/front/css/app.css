@@ -3391,6 +3391,11 @@ header.fixed .logo img {
 .navbar-nav .nav-item .nav-link.active {
   color: var(--secondary);
 }
+@media screen and (min-width: 992px) {
+  .navbar-nav .nav-item .nav-link:hover {
+    color: var(--secondary);
+  }
+}
 
 footer {
   padding-top: 100px;
